@@ -1,4 +1,4 @@
-﻿namespace EmployeeManagement_Web.Models
+﻿namespace EmployeeManagement.Data.Models
 {
     public class EmployeeModel
     {

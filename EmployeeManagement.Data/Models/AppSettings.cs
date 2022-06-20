@@ -1,4 +1,4 @@
-﻿namespace Empolyee_Mangement.Data.Models
+﻿namespace EmployeeManagement.Data.Models
 {
     public class AppSettings
     {
