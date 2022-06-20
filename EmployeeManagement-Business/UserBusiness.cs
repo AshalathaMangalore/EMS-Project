@@ -1,4 +1,6 @@
-﻿using EmployeeManagement_Repository;
+﻿using EmployeeManagement.Data.Models;
+using EmployeeManagement_Repository;
+using EmployeeManagement_Repository.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +17,16 @@ namespace EmployeeManagement_Business
         {
             this.userRepository = new UserRepository();
         }
+        public async Task<UserModel> Login(UserModel loginmodel)
+        {
+
+            var login = await userRepository.Login(loginmodel.UserEmail, loginmodel.UserPassword);
+            UserModel userDetail = new UserModel();
+            userDetail.UserEmail = loginmodel.UserEmail;
+            userDetail.UserPassword = loginmodel.UserPassword;
+           
+            return userDetail;
+        }
+
     }
 }
