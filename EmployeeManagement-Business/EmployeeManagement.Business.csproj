@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>EmployeeManagement_Business</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\SkillHouse\Empolyee-Management-System\Empolyee-Management-System\EmployeeManagement.Data\EmployeeManagement.Data.csproj" />
+    <ProjectReference Include="..\EmployeeManagement-Repository\EmployeeManagement.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

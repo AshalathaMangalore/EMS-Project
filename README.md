@@ -1,1 +1,1 @@
-# EMS-Project
+# Alumni-Mangement-System
