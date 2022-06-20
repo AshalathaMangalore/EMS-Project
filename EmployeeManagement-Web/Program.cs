@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.AspNetCore.Http.Features;
 using EmployeeManagement.Web.Infrastructure;
 using System.Text.Json.Serialization;
-using EmployeeManagement.Data.Models;
+using EmployeeManagement.Models.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager ConfigurationManager = builder.Configuration;

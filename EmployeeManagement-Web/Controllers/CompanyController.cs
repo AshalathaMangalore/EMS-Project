@@ -1,6 +1,6 @@
 ﻿using EmployeeManagement_Business;
 using EmployeeManagement_Repository.Entities;
-using EmployeeManagement.Data.Models;
+using EmployeeManagement.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;

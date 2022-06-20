@@ -1,5 +1,5 @@
 ﻿
-using EmployeeManagement.Data.Models;
+using EmployeeManagement.Models.Models;
 using System.Security.Claims;
 
 namespace  EmployeeManagement.Web.Infrastructure

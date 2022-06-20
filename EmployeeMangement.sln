@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagement.Reposito
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{2C63C2F9-7463-4C47-B8F3-E6CC0A1A2345}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagement.Data", "Database Backup\EmployeeManagement.Data\EmployeeManagement.Data.csproj", "{EF9842F4-C227-43E2-833D-0B8F3168FD45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Models", "EmployeeManagement.Models\EmployeeManagement.Models.csproj", "{3457C657-377A-4F86-BB74-1F43AEF13DEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,10 @@ Global
 		{2C63C2F9-7463-4C47-B8F3-E6CC0A1A2345}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C63C2F9-7463-4C47-B8F3-E6CC0A1A2345}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C63C2F9-7463-4C47-B8F3-E6CC0A1A2345}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{EF9842F4-C227-43E2-833D-0B8F3168FD45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF9842F4-C227-43E2-833D-0B8F3168FD45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF9842F4-C227-43E2-833D-0B8F3168FD45}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF9842F4-C227-43E2-833D-0B8F3168FD45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3457C657-377A-4F86-BB74-1F43AEF13DEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3457C657-377A-4F86-BB74-1F43AEF13DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3457C657-377A-4F86-BB74-1F43AEF13DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3457C657-377A-4F86-BB74-1F43AEF13DEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,5 @@
 ﻿using EmployeeManagement_Repository;
-using EmployeeManagement.Data.Models;
+using EmployeeManagement.Models.Models;
 using Microsoft.Extensions.DependencyInjection;
 
 

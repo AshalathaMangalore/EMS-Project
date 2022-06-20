@@ -33,10 +33,9 @@
 		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
 	</ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\SkillHouse\Empolyee-Management-System\Empolyee-Management-System\EmployeeManagement.Data\EmployeeManagement.Data.csproj" />
-    <ProjectReference Include="..\Database Backup\EmployeeManagement.Data\EmployeeManagement.Data.csproj" />
     <ProjectReference Include="..\EmployeeManagement-Business\EmployeeManagement.Business.csproj" />
     <ProjectReference Include="..\EmployeeManagement-Repository\EmployeeManagement.Repository.csproj" />
+    <ProjectReference Include="..\EmployeeManagement.Models\EmployeeManagement.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

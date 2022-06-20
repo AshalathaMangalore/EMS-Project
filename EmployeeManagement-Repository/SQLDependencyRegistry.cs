@@ -1,4 +1,4 @@
-﻿using EmployeeManagement.Data.Models;
+﻿using EmployeeManagement.Models.Models;
 using EmployeeManagement_Repository.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
