@@ -26,18 +26,18 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   login() {
-    this.router.navigate(["/admin"]);
-    //this.submitted = true;
-    //if (this.loginForm.invalid)
-    //  return;
-    //  const userName = this.loginForm.value.username;
-    //  const passWord = this.loginForm.value.password;
-    //    this.authenticationService.login(userName, passWord)
-    //  .subscribe(
-    //    (data) => {
-    //      this.router.navigate(["/admin"]);
+    //this.router.navigate(["/admin"]);
+    this.submitted = true;
+    if (this.loginForm.invalid)
+      return;
+      const userName = this.loginForm.value.username;
+      const passWord = this.loginForm.value.password;
+        this.authenticationService.login(userName, passWord)
+      .subscribe(
+        (data) => {
+          this.router.navigate(["/admin"]);
       
-    //    })
+        })
   }
 
 }

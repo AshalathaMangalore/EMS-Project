@@ -16,8 +16,8 @@ export class AuthenticationService {
     }
     login(username: string, password: string) {
         var loginmodel={
-            userEmail:username,
-            password:password
+            UserEmail:username,
+            UserPassword:password
         }
         return this.http.post<any>(LoginURLConstants.LOGIN,loginmodel)
             .pipe(map(user => {
