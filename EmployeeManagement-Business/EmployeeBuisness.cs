@@ -151,5 +151,36 @@ namespace EmployeeManagement_Business
                 return null;
             }
         }
+
+        public async Task<List<EmployeeModel>> GetAllEmpDetails()
+        {
+            List<EmployeeModel> empLst = new List<EmployeeModel>();
+            List<Employee> empDetails = await employeeRepository.GetAllEmployeesAsync();
+            //CompanyDetail compDetail = await companyRepository.GetById(companyId);
+
+            if (empDetails.Count != 0)
+            {
+                for (int i = 0; i < empDetails.Count; i++)
+                {
+                    EmployeeModel empObj = new EmployeeModel();
+                    empObj.CompanyId = empDetails[i].CompanyId;
+                    empObj.FirstName = empDetails[i].FirstName;
+                    empObj.LastName = empDetails[i].LastName;
+                    empObj.Gender = empDetails[i].Gender;
+                    empObj.Phone = empDetails[i].Phone;
+                    empObj.Email = empDetails[i].Email;
+                    empObj.DateCreated = empDetails[i].DateCreated;
+                    empObj.DateModified = empDetails[i].DateModified;
+                    //empObj.CompanyName = compDetail.CompanyName;
+                    //empObj.CompanyPhone = compDetail.CompanyPhone;
+                    empLst.Add(empObj);
+                }
+                return empLst;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

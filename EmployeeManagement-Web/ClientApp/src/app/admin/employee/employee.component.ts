@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/core/service/authentication.service';
 
 @Component({
   selector: 'app-employee',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private authenticationService: AuthenticationService) { }
+  allEmpDetails: any =[];
   ngOnInit(): void {
+    this.getAllEmployee();
+
   }
 
+  getAllEmployee(){
+    this.authenticationService.getEmpDetails()
+    .subscribe(
+      (data : any) => {
+        debugger;
+        this.allEmpDetails = data;
+      })
+  }
 }

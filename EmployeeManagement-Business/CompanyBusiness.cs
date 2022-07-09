@@ -44,8 +44,15 @@ namespace EmployeeManagement_Business
 
         public async Task<HttpStatusCode> DeleteCompany(int companyId)
         {
-            await companyRepository.Delete(companyId);
-            return HttpStatusCode.OK;
+            try
+            {
+                await companyRepository.Delete(companyId);
+                return HttpStatusCode.OK;
+            }
+            catch (Exception e)
+            {
+                return HttpStatusCode.BadRequest;
+            }
 
         }
 
@@ -56,6 +63,46 @@ namespace EmployeeManagement_Business
             companyDetail.CompanyAddress = comp.CompanyAddress;
             companyDetail.CompanyPhone = comp.CompanyPhone;
             await companyRepository.CreateCompanyDetails(companyDetail);
+            return HttpStatusCode.OK;
+        }
+
+        public async Task<List<CompanyModel>> GetAllCompanyDetails()
+        {
+            List<CompanyModel> lstCompDetails = new List<CompanyModel>();
+
+            List<CompanyDetail> companyDetail = new List<CompanyDetail>();
+            companyDetail =  await companyRepository.GetAllCompanyAsync();
+            foreach(var comp in companyDetail)
+            {
+                CompanyModel c = new CompanyModel();
+                c.CompanyId = comp.CompanyId;
+                c.CompanyName = comp.CompanyName;
+                c.CompanyAddress = comp.CompanyAddress;
+                c.CompanyPhone = comp.CompanyPhone;
+                lstCompDetails.Add(c);
+            }
+            return lstCompDetails;
+        }
+        public async Task<CompanyModel> GetCompanyById(int Id)
+        {
+            CompanyModel c = new CompanyModel();
+            
+            CompanyDetail comp = await companyRepository.GetById(Id);
+            c.CompanyId = comp.CompanyId;
+            c.CompanyName = comp.CompanyName;
+            c.CompanyAddress = comp.CompanyAddress;
+            c.CompanyPhone = comp.CompanyPhone;
+            return c;
+        }
+
+        public async Task<HttpStatusCode> UpdateCompanyDetails(CompanyModel company)
+        {
+            CompanyDetail compDetail = new CompanyDetail();
+            compDetail.CompanyId = company.CompanyId;
+            compDetail.CompanyPhone = company.CompanyPhone;
+            compDetail.CompanyName = company.CompanyName;
+            compDetail.CompanyAddress = company.CompanyAddress;
+            await companyRepository.Update(compDetail);
             return HttpStatusCode.OK;
         }
 
