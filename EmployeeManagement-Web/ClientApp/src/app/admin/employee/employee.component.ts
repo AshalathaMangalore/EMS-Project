@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/core/service/authentication.service';
+import { EmployeeModel } from 'src/app/login/models/employee/employee.module';
 
 @Component({
   selector: 'app-employee',
@@ -8,44 +9,68 @@ import { AuthenticationService } from 'src/app/core/service/authentication.servi
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
+  EmployeeForm!: FormGroup;
+  allEmpDetails: any =[];
+  Submit: boolean=true;
+  id: any;
+  show : boolean=false;
 
   constructor(private formBuilder: FormBuilder,private authenticationService: AuthenticationService) { }
-  allEmpDetails: any =[];
-  EmployeeForm!:FormGroup;
-  show: boolean=false;
-  id:any;
   ngOnInit(): void {
     this.EmployeeForm = this.formBuilder.group({
-      firstName : ["", Validators.required],
-      lastName : ["", Validators.required],
-      phone : ["", Validators.required],
-      email : ["", Validators.required]
-    })
-
+      companyId: ["",Validators.required],
+      projectId: ["",Validators.required],
+      firstname: ["",Validators.required],
+      lastname: ["",Validators.required],
+      gender: ["",Validators.required],
+      email: ["",Validators.required],
+      phone: ["",Validators.required],
+      datecreated: ["",Validators.required],
+      datemodified: ["",Validators.required],
+    });
     this.getAllEmployee();
 
   }
-
+  
   onSubmit(){
     if (this.EmployeeForm.invalid)
       return;
-      const id = this.id;
-      const firstName = this.EmployeeForm.value.firstName;
-      const lastName = this.EmployeeForm.value.lastName;
-      const phone = this.EmployeeForm.value.phone;
-      const email = this.EmployeeForm.value.email;
-      
+    const companyId =parseInt( this.EmployeeForm.value.companyId );
+    const projectId = parseInt( this.EmployeeForm.value.projectId );
+    const firstName = this.EmployeeForm.value.firstname;
+    const lastName = this.EmployeeForm.value.lastname;
+    const gender = this.EmployeeForm.value.gender;
+    const email = this.EmployeeForm.value.email;
+    const phone = this.EmployeeForm.value.phone;
+    const dateCreated = this.EmployeeForm.value.datecreated;
+    const dateModified = this.EmployeeForm.value.datemodified;
 
-      this.authenticationService.EditEmployee(id,firstName,lastName,phone,email)
-      .subscribe(
-        (data:any)=>{
-          debugger;
-          this.show = true;
-        }
-      )
+    let newEmployee:EmployeeModel = {
+      CompanyId:companyId,
+      ProjectId:projectId,
+      FirstName:firstName,
+      LastName:lastName,
+      Gender:gender,
+      Email:email,
+      Phone:phone,
+      DateCreated:dateCreated,
+      DateModified:dateModified
+    };
+    console.log(newEmployee);
+    
+     this.authenticationService.SaveEmployee(newEmployee)
+    .subscribe(
+      (data : any) => {
+        this.show=true;
+
+      console.log("Status: " + data);
+      // this.clearForm();
+    });
+
+    // this.getAllEmployee();
+
   }
 
-  
 
   getAllEmployee(){
     this.authenticationService.getEmpDetails()
@@ -53,9 +78,24 @@ export class EmployeeComponent implements OnInit {
       (data : any) => {
         debugger;
         this.allEmpDetails = data;
+        
       })
   }
 
+  clearForm() {
+    this.EmployeeForm.reset({
+          'companyId': '',
+          'projectId': '',
+          'firstName': '',
+          'lastName': '',
+          'gender': '',
+          'email': '',
+          'phone': '',
+          'dateCreated': '',
+          'dateModified': '',
+         });
+    }
+ 
   editEmp(empId:any){
     alert(empId);
     this.authenticationService.getEmployeeById(empId)
@@ -78,13 +118,4 @@ export class EmployeeComponent implements OnInit {
     this.show = !this.show;
     this.clearForm();
   }
-
-  clearForm() {
-    this.EmployeeForm.reset({
-          'firstName': '',
-          'lastName': '',
-          'phone': '',
-          'email':''
-         });
-    }
 }
