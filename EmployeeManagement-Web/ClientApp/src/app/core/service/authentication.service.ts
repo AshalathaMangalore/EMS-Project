@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { CompanyURLConstants, EmployeeURLConstants, LoginURLConstants, USERURLConstants } from "src/app/shared/constants/url-constant";
 import { BehaviorSubject, Observable } from "rxjs";
 import { AuthModel } from "src/app/login/models/login.model";
+import { EmployeeModel } from "src/app/login/models/employee/employee.module";
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<AuthModel>;
@@ -110,6 +111,17 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         //this.currentUserSubject.next(null);
         this.router.navigate(['/login'])
+    }
+
+    SaveEmployee(newEmployee:EmployeeModel){
+        
+        return this.http.post<any>(EmployeeURLConstants.SAVEEMPLOYEE,newEmployee)
+            .pipe(map(status => {
+                debugger
+                return status;
+                
+
+            }));
     }
     
 

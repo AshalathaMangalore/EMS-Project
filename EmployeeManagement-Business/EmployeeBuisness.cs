@@ -163,7 +163,9 @@ namespace EmployeeManagement_Business
                 for (int i = 0; i < empDetails.Count; i++)
                 {
                     EmployeeModel empObj = new EmployeeModel();
+                    empObj.Id = empDetails[i].Id;
                     empObj.CompanyId = empDetails[i].CompanyId;
+                    empObj.ProjectId = empDetails[i].ProjectId;
                     empObj.FirstName = empDetails[i].FirstName;
                     empObj.LastName = empDetails[i].LastName;
                     empObj.Gender = empDetails[i].Gender;
@@ -182,5 +184,10 @@ namespace EmployeeManagement_Business
                 return null;
             }
         }
+
+        //public async Task<HttpStatusCode> CreateEmployeeDetails(EmployeeModel emp)
+        //{
+        //    Employee employeeDetail = new Employee();
+       
     }
 }

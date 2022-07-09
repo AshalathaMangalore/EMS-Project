@@ -20,3 +20,35 @@
     background-color: #2A3F54;
     color: white;
   }
+
+  .row{
+    padding-top: 5px;
+}
+
+
+.popup {
+  background: #6fd68e;
+    top: 100px;
+    left: 40%;
+    width: 419px;
+    position: absolute;
+    z-index: 41;
+    padding: 30px;
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.4); 
+    box-shadow:0 0 10px rgba(0,0,0,0.4)
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: rgb(24, 24, 24);
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
