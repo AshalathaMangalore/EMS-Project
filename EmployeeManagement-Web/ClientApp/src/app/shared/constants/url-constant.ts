@@ -18,4 +18,6 @@ export class CompanyURLConstants {
 export class EmployeeURLConstants{
     static GETALLEMP = apiUrl + '/employee/GetAllEmp';
     static DELETEALLEMP = apiUrl + '/employee/DeleteEmployee';
+    static SAVEEMPLOYEE = apiUrl + '/employee/AddEmployeeDetails';
 }
+

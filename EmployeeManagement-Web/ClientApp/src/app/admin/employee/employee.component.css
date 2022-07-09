@@ -20,7 +20,13 @@
     background-color: #2A3F54;
     color: white;
   }
-  .popup {
+
+  .row{
+    padding-top: 5px;
+}
+
+
+.popup {
   background: #6fd68e;
     top: 100px;
     left: 40%;
