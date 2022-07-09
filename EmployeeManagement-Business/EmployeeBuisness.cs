@@ -163,6 +163,7 @@ namespace EmployeeManagement_Business
                 for (int i = 0; i < empDetails.Count; i++)
                 {
                     EmployeeModel empObj = new EmployeeModel();
+                    empObj.Id= empDetails[i].Id;
                     empObj.CompanyId = empDetails[i].CompanyId;
                     empObj.FirstName = empDetails[i].FirstName;
                     empObj.LastName = empDetails[i].LastName;

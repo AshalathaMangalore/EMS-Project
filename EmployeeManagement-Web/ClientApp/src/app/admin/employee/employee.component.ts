@@ -10,6 +10,7 @@ export class EmployeeComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService) { }
   allEmpDetails: any =[];
+  show: boolean = false
   ngOnInit(): void {
     this.getAllEmployee();
 
@@ -21,6 +22,24 @@ export class EmployeeComponent implements OnInit {
       (data : any) => {
         debugger;
         this.allEmpDetails = data;
+        
       })
+  }
+  delete(empId: any){
+    this.authenticationService.deleteEmployeeDetails(empId)
+    .subscribe(
+      (data : any) => {
+        debugger;
+        data;
+        this.show = true
+      
+        //this.allCompanyDetails = data;
+      })
+      this.getAllEmployee();
+  }
+  closePopup()
+  {
+    this.show = !this.show;
+    
   }
 }
