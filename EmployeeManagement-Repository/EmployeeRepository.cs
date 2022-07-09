@@ -27,7 +27,9 @@ namespace EmployeeManagement_Repository
             if (existingEmployee != null)
             {
                 existingEmployee.FirstName = employee.FirstName; // update only changeable properties
-                existingEmployee.Gender = employee.Gender;
+                existingEmployee.LastName = employee.LastName;
+                existingEmployee.Phone = employee.Phone;
+                existingEmployee.Email = employee.Email;
                 await this.dbContext.SaveChangesAsync();
             }
         }

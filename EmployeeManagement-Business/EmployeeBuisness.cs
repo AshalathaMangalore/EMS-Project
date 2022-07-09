@@ -163,7 +163,9 @@ namespace EmployeeManagement_Business
                 for (int i = 0; i < empDetails.Count; i++)
                 {
                     EmployeeModel empObj = new EmployeeModel();
+                    empObj.Id = empDetails[i].Id;
                     empObj.CompanyId = empDetails[i].CompanyId;
+                    empObj.ProjectId = empDetails[i].ProjectId;
                     empObj.FirstName = empDetails[i].FirstName;
                     empObj.LastName = empDetails[i].LastName;
                     empObj.Gender = empDetails[i].Gender;
@@ -171,8 +173,8 @@ namespace EmployeeManagement_Business
                     empObj.Email = empDetails[i].Email;
                     empObj.DateCreated = empDetails[i].DateCreated;
                     empObj.DateModified = empDetails[i].DateModified;
-                    //empObj.CompanyName = compDetail.CompanyName;
-                    //empObj.CompanyPhone = compDetail.CompanyPhone;
+                    //empObj.CompanyName = empDetails[i].Company.CompanyName;
+                    //empObj.CompanyPhone = empDetails[i].Company.CompanyPhone;
                     empLst.Add(empObj);
                 }
                 return empLst;
@@ -181,6 +183,46 @@ namespace EmployeeManagement_Business
             {
                 return null;
             }
+        }
+
+        public async Task<EmployeeModel> GetEmployeeById(int id)
+        {
+            EmployeeModel e = new EmployeeModel();
+            Employee emp = await employeeRepository.GetById(id);
+            if(emp != null) {
+            e.Id = emp.Id;
+            e.CompanyId = emp.CompanyId;
+            e.ProjectId = emp.ProjectId;
+            e.FirstName = emp.FirstName;
+            e.LastName = emp.LastName;
+            e.Gender = emp.Gender;
+            e.Email = emp.Email;
+            e.Phone = emp.Phone;
+            e.DateCreated = emp.DateCreated;
+            e.DateModified = emp.DateModified;
+            return e;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<HttpStatusCode> UpdateEmployeeDetails(EmployeeModel employee)
+        {
+            Employee emp = new Employee();
+            emp.Id = employee.Id;
+            emp.CompanyId = employee.CompanyId;
+            emp.ProjectId = employee.ProjectId;
+            emp.FirstName = employee.FirstName;
+            emp.LastName = employee.LastName;
+            emp.Gender = employee.Gender;
+            emp.Email = employee.Email;
+            emp.Phone = employee.Phone;
+            emp.DateCreated = employee.DateCreated;
+            emp.DateModified = employee.DateModified;
+            await employeeRepository.Update(emp);
+            return HttpStatusCode.OK;
         }
     }
 }

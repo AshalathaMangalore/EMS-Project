@@ -38,9 +38,6 @@ export class AuthenticationService {
         return this.http.post<any>(CompanyURLConstants.SAVECOMPANY,companyModel)
             .pipe(map(company => {
             debugger
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                //localStorage.setItem('currentUser', JSON.stringify(user));
-                //return user;
             }));
     }
     getCompanyDetails(){
@@ -90,9 +87,6 @@ export class AuthenticationService {
         return this.http.put<any>(CompanyURLConstants.UPDATECOMPANY,companyModel)
         .pipe(map(statusCodeDetail => {
         debugger
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            //localStorage.setItem('currentUser', JSON.stringify(user));
-            //return user;
             return statusCodeDetail;
         }));
     }
@@ -104,12 +98,33 @@ export class AuthenticationService {
     public get currentUserValue(): AuthModel {
         return this.currentUserSubject.value;
     }
-
     logout() {
-        // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-        //this.currentUserSubject.next(null);
         this.router.navigate(['/login'])
+    }
+    getEmployeeById(empId:any){
+        debugger;
+        return this.http.get<any>(EmployeeURLConstants.GETEMPBYID, { params: { 'empId': empId }})
+        .pipe(map(emp => {
+            debugger;
+        return emp;
+        }));
+    }
+    EditEmployee(id:any,firstName:string,lastName:string,phone:string,email:string){
+        var employeeModel = {
+            Id : id,
+            FirstName : firstName,
+            LastName : lastName,
+            Phone : phone,
+            Email : email
+        }
+        console.log(employeeModel);
+        
+        return this.http.put<any>(EmployeeURLConstants.UPDATEEMPLOYEE,employeeModel)
+        .pipe(map(empDetails => {
+            debugger
+                return empDetails;
+            }));
     }
     
 

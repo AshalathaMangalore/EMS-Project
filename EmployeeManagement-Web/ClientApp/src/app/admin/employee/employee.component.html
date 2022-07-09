@@ -1,16 +1,55 @@
 <div class="right_col" role="main">
   <!-- top tiles -->
-  <div class="row tile_count"><table border="1" id="tblCompany">
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Phone</th>
-  </tr>
-  <tr *ngFor="let item of allEmpDetails">
-    <td >{{item.firstName}}</td>
-    <td >{{item.lastName}}</td>
-    <td >{{item.phone}}</td>
-  </tr>
-</table>
+  <div class="row tile_count">
+    <div>
+      <form [formGroup]="EmployeeForm" (ngSubmit)="onSubmit()">
+        <h3>Update Employee Details</h3>
+        <div class="divCompany">
+          <div class="row p-6">
+            <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+          </div>
+          <div class="row p-6">
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+          </div>
+          <div class="row p-6">
+            <input type="text" class="form-control" placeholder="Phone Number" formControlName="phone">
+          </div>
+          <div class="row p-6">
+            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+          </div>
+          <div class="row p-6">
+            <button type="submit" class="btn btn-success">Update</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+      <table border="1" id="tblCompany">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Click Here To</th>
+        </tr>
+        <tr *ngFor="let item of allEmpDetails">
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.email}}</td>
+          <td><button class="btn btn-success" (click)="editEmp(item.id)">Edit</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
+
+<div *ngIf="show">
+  <div class="popup">
+    <a class="close" (click)="closePopup()">&times;</a>
+    <h2>Thanks!</h2>
+    <div class="content">
+      Succesully added new Company Details
+    </div>
+  </div>
 </div>
