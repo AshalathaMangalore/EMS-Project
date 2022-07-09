@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement_Web.Controllers
 {
+    [ApiController]
+    [Route("user")]
     public class UserController : Controller
     {
         private readonly UserBusiness userBusiness;
@@ -12,6 +14,8 @@ namespace EmployeeManagement_Web.Controllers
         {
             this.userBusiness = new UserBusiness();
         }
+
+        [HttpPost("Login")]
 
         public async Task<UserModel> Login(UserModel loginmodel)
         {

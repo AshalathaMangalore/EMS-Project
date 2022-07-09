@@ -59,5 +59,23 @@ namespace EmployeeManagement_Business
             return HttpStatusCode.OK;
         }
 
+        public async Task<List<CompanyModel>> GetAllCompanyDetails()
+        {
+            List<CompanyModel> lstCompDetails = new List<CompanyModel>();
+
+            List<CompanyDetail> companyDetail = new List<CompanyDetail>();
+            companyDetail = await companyRepository.GetAllCompanyAsync();
+            foreach(var comp in companyDetail)
+            {
+                CompanyModel c = new CompanyModel();
+                c.CompanyId = comp.CompanyId;
+                c.CompanyName = comp.CompanyName;
+                c.CompanyAddress = comp.CompanyAddress;
+                c.CompanyPhone = comp.CompanyPhone;
+                lstCompDetails.Add(c);
+            }
+            return lstCompDetails;
+        }
+
     }
 }
