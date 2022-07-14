@@ -63,6 +63,7 @@
     <td>{{item.phone}}</td>
     <td>{{item.dateCreated}}</td>
     <td>{{item.dateModified}}</td>
+    <td><button class="btnSubmit" (click)="delete(item.id)">Delete</button></td>
     <td><button class="btn btn-success" (click)="editEmp(item.id)">Edit</button></td>
   </tr>
 </table>

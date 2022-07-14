@@ -118,4 +118,14 @@ export class EmployeeComponent implements OnInit {
     this.show = !this.show;
     this.clearForm();
   }
+
+  delete(empId: any) {
+    this.authenticationService.deleteEmployeeDetails(empId)
+      .subscribe(
+        (data: any) => {
+          debugger;
+          data;
+          //this.allCompanyDetails = data;
+        })
+  }
 }
