@@ -14,9 +14,7 @@ namespace EmployeeManagement_Web.Controllers
         {
             this.userBusiness = new UserBusiness();
         }
-
         [HttpPost("Login")]
-
         public async Task<UserModel> Login(UserModel loginmodel)
         {
 

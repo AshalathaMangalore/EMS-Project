@@ -1,4 +1,4 @@
-export class CompanyModedl{
+export class CompanyModel{
   CompanyId!: number;
   CompanyName!: string;
   CompanyAddress!: string;

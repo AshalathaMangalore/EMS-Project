@@ -1,96 +1,81 @@
 <div class="right_col" role="main">
-  <div class="">
-    <div class="page-title">
-      <div class="title_left">
-        <h3>Tables <small></small></h3>
-      </div>
-
-      <div class="title_right">
-        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>
+  <!-- top tiles -->
+  <div class="row tile_count">
+    <div class="">
+  <form [formGroup]="EmployeeForm" (ngSubmit)="onSubmit()">
+    <h1>Add Employee Details</h1>
+    <div class="divCompany">
+    <div class="row p-6">
+      <input class="form-control" formControlName="companyId" placeholder="Company ID" type="text">
     </div>
-
+    <div class="row p-6">
+      <input class="form-control" formControlName="projectId" placeholder="Project ID" type="text">
     </div>
-
-    <div class="clearfix"></div>
-
+    <div class="row p-6">
+      <input class="form-control" formControlName="firstname" placeholder="First Name" type="text">
+    </div>
+    <div class="row p-6">
+      <input class="form-control" formControlName="lastname" placeholder="Last Name" type="text">
+    </div>
+    <div class="row p-6">
+      <input class="form-control" formControlName="gender" placeholder="Gender" type="text">
+    </div>
+    <div class="row p-6">
+      <input class="form-control" formControlName="email" placeholder="Email" type="text">
+    </div>
+    <div class="row p-6">
+      <input class="form-control" formControlName="phone" placeholder="Phone" type="text">
+    </div>
+    <div class="row p-6">
+      <input class="form-control" formControlName="datecreated" placeholder="Date Created" type="text">
+    </div>
+    <div class="row p-6">
+      <input class="form-control" formControlName="datemodified" placeholder="Date Modified" type="text">
+    </div>
     <div class="row">
+      <button *ngIf="Submit" class="btn btn-primary" role="button" type="submit" width="100px"><h6>Submit</h6></button>
+    </div>
+   </div>
+  </form>
+</div>
+<br>
+  <!-- top tiles -->
+  <div style="height: 400px;overflow-y: auto;" >
+    <table border="1" id="tblCompany">
+  <tr>
+    <th>Company ID</th>
+    <th>Project ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Date Created</th>
+    <th>Date Modified</th>
+  </tr>
+  <tr *ngFor="let item of allEmpDetails">
+    <td>{{item.companyId}}</td>
+    <td>{{item.projectId}}</td>
+    <td>{{item.firstName}}</td>
+    <td>{{item.lastName}}</td>
+    <td>{{item.gender}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.phone}}</td>
+    <td>{{item.dateCreated}}</td>
+    <td>{{item.dateModified}}</td>
+    <td><button class="btn btn-success" (click)="editEmp(item.id)">Edit</button></td>
+  </tr>
+</table>
+</div>
+</div>
+</div>
 
-     
-      <div class="clearfix"></div>
-
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-          <div class="x_title">
-            <h2>Table design <small>Custom design</small></h2>
-            <ul class="nav navbar-right panel_toolbox">
-              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Settings 1</a>
-                  </li>
-                  <li><a href="#">Settings 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li><a class="close-link"><i class="fa fa-close"></i></a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </div>
-
-          <div class="x_content">
-
-
-            <div class="table-responsive">
-              <table class="table table-striped jambo_table bulk_action">
-                <thead>
-                  <tr class="headings">
-                    <th class="column-title">ID </th>
-                    <th class="column-title">Company ID </th>
-                    <th class="column-title">Project ID </th>
-                    <th class="column-title">FirstName </th>
-                    <th class="column-title">LastName </th>
-                    <th class="column-title">Gender </th>
-                    <th class="column-title">Email </th>
-                    <th class="column-title">Phone </th>
-                    <th class="column-title">DateCreated </th>
-                    <th class="column-title">DateModified </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr class="even pointer" *ngFor="let item of allEmployeeDetails">
-                    <td>{{item.id}}</td>
-                    <td>{{item.companyId}}</td>
-                    <td>{{item.projectId}}</td>
-                    <td>{{item.firstName}}</td>
-                    <td>{{item.lastName}}</td>
-                    <td>{{item.gender}}</td>
-                    <td>{{item.email}}</td>
-                    <td>{{item.phone}}</td>
-                    <td>{{item.dateCreated}}</td>
-                    <td>{{item.dateModified}}</td>
-                  </tr>
-
-                  
-                  
-                </tbody>
-              </table>
-            </div>
-                    
-                
-          </div>
-        </div>
-      </div>
+<div *ngIf="show">
+  <div class="popup">
+    <a class="close" (click)="closePopup()">&times;</a>
+    <h2>Thanks!</h2>
+    <div class="content">
+      Succesully added new Employee Details
     </div>
   </div>
+</div>

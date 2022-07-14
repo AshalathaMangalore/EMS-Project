@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http.Features;
 using EmployeeManagement.Web.Infrastructure;
 using System.Text.Json.Serialization;
 using EmployeeManagement.Models.Models;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager ConfigurationManager = builder.Configuration;
