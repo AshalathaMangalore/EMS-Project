@@ -52,6 +52,7 @@
     <th>Phone</th>
     <th>Date Created</th>
     <th>Date Modified</th>
+    <th>Action</th>
   </tr>
   <tr *ngFor="let item of allEmpDetails">
     <td>{{item.companyId}}</td>
@@ -63,8 +64,10 @@
     <td>{{item.phone}}</td>
     <td>{{item.dateCreated}}</td>
     <td>{{item.dateModified}}</td>
-    <td><button class="btnSubmit" (click)="delete(item.id)">Delete</button></td>
-    <td><button class="btn btn-success" (click)="editEmp(item.id)">Edit</button></td>
+    <td>
+    <button class="btn btn-success" (click)="editEmp(item.id)">Edit</button>
+    <button class="btn btn-danger btnSubmit" (click)="delete(item.id)">Delete</button>
+  </td>
   </tr>
 </table>
 </div>
