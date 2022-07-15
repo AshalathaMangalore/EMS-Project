@@ -144,6 +144,16 @@ export class EmployeeComponent implements OnInit {
     this.clearForm();
   }
 
+  delete(empId: any) {
+    this.authenticationService.deleteEmployeeDetails(empId)
+      .subscribe(
+        (data: any) => {
+          debugger;
+          data;
+          //this.allCompanyDetails = data;
+        })
+  }
+
   closeErrorPopup(){
     this.errorshow=!this.errorshow;
   }
