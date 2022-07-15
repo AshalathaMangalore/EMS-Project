@@ -11,9 +11,12 @@ import { EmployeeModel } from 'src/app/login/models/employee/employee.module';
 export class EmployeeComponent implements OnInit {
   EmployeeForm!: FormGroup;
   allEmpDetails: any =[];
+  companyDDdetails: any =[];
+  projectDDdetails: any=[];
   Submit: boolean=true;
   id: any;
   show : boolean=false;
+  errorshow: boolean=false;
 
   constructor(private formBuilder: FormBuilder,private authenticationService: AuthenticationService) { }
   ngOnInit(): void {
@@ -29,12 +32,18 @@ export class EmployeeComponent implements OnInit {
       datemodified: ["",Validators.required],
     });
     this.getAllEmployee();
-
+    this.getCompanyDetailsForDropdown();
+   
   }
+  
   
   onSubmit(){
     if (this.EmployeeForm.invalid)
+    {
+      this.errorshow=true;
       return;
+    }
+      //return;
     const companyId =parseInt( this.EmployeeForm.value.companyId );
     const projectId = parseInt( this.EmployeeForm.value.projectId );
     const firstName = this.EmployeeForm.value.firstname;
@@ -67,8 +76,20 @@ export class EmployeeComponent implements OnInit {
       // this.clearForm();
     });
 
-    // this.getAllEmployee();
+    this.getAllEmployee();
+    
 
+  }
+
+  getCompanyDetailsForDropdown(){
+    debugger;
+    this.authenticationService.getCompanyDetails()
+    .subscribe(
+      (data : any) => {
+        debugger;
+        this.companyDDdetails = data;
+        
+      })
   }
 
 
@@ -97,17 +118,21 @@ export class EmployeeComponent implements OnInit {
     }
  
   editEmp(empId:any){
-    alert(empId);
     this.authenticationService.getEmployeeById(empId)
     .subscribe(
       (data:any)=>{
         console.log(data);
         debugger
         this.EmployeeForm = this.formBuilder.group({
-          firstName:[data.firstName, ''],
-          lastName:[data.lastName, ''],
+          firstname:[data.firstName, ''],
+          lastname:[data.lastName, ''],
           phone:[data.phone, ''],
-          email:[data.email, '']
+          email:[data.email, ''],
+          companyId: [data.companyId, ''],
+          projectId: [data.projectId,''],
+          gender:[data.gender,''],
+          datecreated:[data.dateCreated,''],
+          datemodified:[data.dateModified,'']
         });
         this.id=data.id;
       })
@@ -117,5 +142,19 @@ export class EmployeeComponent implements OnInit {
   {
     this.show = !this.show;
     this.clearForm();
+  }
+
+  delete(empId: any) {
+    this.authenticationService.deleteEmployeeDetails(empId)
+      .subscribe(
+        (data: any) => {
+          debugger;
+          data;
+          //this.allCompanyDetails = data;
+        })
+  }
+
+  closeErrorPopup(){
+    this.errorshow=!this.errorshow;
   }
 }

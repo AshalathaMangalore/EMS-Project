@@ -61,3 +61,26 @@
   max-height: 30%;
   overflow: auto;
 }
+
+.errorpopup {
+  background: #df3737;
+    top: 100px;
+    left: 40%;
+    width: 419px;
+    position: absolute;
+    z-index: 41;
+    padding: 30px;
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.4); 
+    box-shadow:0 0 10px rgba(0,0,0,0.4)
+}
+
+.errorpopup h2 {
+  margin-top: 0;
+  color: rgb(249, 247, 247);
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.errorpopup .close:hover {
+  color: #f9f7f7;
+}

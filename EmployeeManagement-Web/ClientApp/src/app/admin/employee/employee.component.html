@@ -6,10 +6,24 @@
     <h1>Add Employee Details</h1>
     <div class="divCompany">
     <div class="row p-6">
-      <input class="form-control" formControlName="companyId" placeholder="Company ID" type="text">
+      <!-- <input class="form-control" formControlName="companyId" placeholder="Company ID" type="text"> -->
+      <select class="form-control" formControlName="companyId">  
+        <option value="" disabled selected>--Select Company--</option>  
+        <option *ngFor="let lang of companyDDdetails"
+                value={{lang.companyId}}>  
+            {{lang.companyName}}  
+        </option>  
+      </select>  
     </div>
     <div class="row p-6">
       <input class="form-control" formControlName="projectId" placeholder="Project ID" type="text">
+      <!-- <select class="form-control" formControlName="projectId" aria-placeholder="Select">  
+        <option value="1" selected >--Select--</option>  
+          <option *ngFor="let lang of projectDDdetails"  
+                  value={{lang.projectId}}>  
+              {{lang.projectName}}  
+          </option>  
+      </select>  -->
     </div>
     <div class="row p-6">
       <input class="form-control" formControlName="firstname" placeholder="First Name" type="text">
@@ -52,6 +66,7 @@
     <th>Phone</th>
     <th>Date Created</th>
     <th>Date Modified</th>
+    <th>Action</th>
   </tr>
   <tr *ngFor="let item of allEmpDetails">
     <td>{{item.companyId}}</td>
@@ -63,7 +78,10 @@
     <td>{{item.phone}}</td>
     <td>{{item.dateCreated}}</td>
     <td>{{item.dateModified}}</td>
-    <td><button class="btn btn-success" (click)="editEmp(item.id)">Edit</button></td>
+    <td>
+    <button class="btn btn-success" (click)="editEmp(item.id)">Edit</button>
+    <button class="btn btn-danger btnSubmit" (click)="delete(item.id)">Delete</button>
+  </td>
   </tr>
 </table>
 </div>
@@ -77,5 +95,12 @@
     <div class="content">
       Succesully added new Employee Details
     </div>
+  </div>
+</div>
+<!-- error -->
+<div *ngIf="errorshow">
+  <div class="errorpopup">
+    <a class="close" style="color: white" (click)="closeErrorPopup()">&times;</a>
+    <h2>Please enter all the fields!</h2>
   </div>
 </div>
