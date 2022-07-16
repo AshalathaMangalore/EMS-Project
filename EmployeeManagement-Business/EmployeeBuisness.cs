@@ -72,7 +72,7 @@ namespace EmployeeManagement_Business
         public async Task<List<EmployeeModel>> GetEmployeesByCompanyId(int companyId)
         {
             List<EmployeeModel> empLst = new List<EmployeeModel>();
-            EmployeeModel empObj = new EmployeeModel();
+            
             List<Employee> empDetails = await employeeRepository.GetAllEmployeesAsync();
             CompanyDetail compDetail = await companyRepository.GetById(companyId);
             List<Employee> empSel = empDetails.Where(a => a.CompanyId == companyId).ToList();
@@ -81,6 +81,8 @@ namespace EmployeeManagement_Business
             {
                 for (int i = 0; i < empSel.Count; i++)
                 {
+                    EmployeeModel empObj = new EmployeeModel();
+                    empObj.Id = empSel[i].Id;
                     empObj.CompanyId = empSel[i].CompanyId;
                     empObj.ProjectId = empSel[i].ProjectId;
                     empObj.FirstName = empSel[i].FirstName;
