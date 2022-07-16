@@ -1,12 +1,12 @@
 export class EmployeeModel{
-    Id!:number;
-    CompanyId!: number;
-    ProjectId!: number;
-    FirstName!: string;
-    LastName!: string;
-    Gender!: string;
-    Email!: string;
-    Phone!: string;
-    DateCreated!: string;
-    DateModified!: string;
+    id!:number;
+    companyId!: number;
+    projectId!: number;
+    firstName!: string;
+    lastName!: string;
+    gender!: string;
+    email!: string;
+    phone!: string;
+    dateCreated!: string;
+    dateModified!: string;
   }

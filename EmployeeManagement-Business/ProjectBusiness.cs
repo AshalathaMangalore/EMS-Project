@@ -49,5 +49,23 @@ namespace EmployeeManagement_Business
             return project;
        
         }
+        public async Task<List<ProjectModel>> GetProjectsByProjID(int projectId)
+        {
+            List<ProjectModel> lstProjDetails = new List<ProjectModel>();
+
+            List<ProjectDetail> projDetail = new List<ProjectDetail>();
+            projDetail = await projectRepository.GetAllProject();
+            projDetail = projDetail.Where(x => x.ProjectId == projectId).ToList();
+            foreach (var proj in projDetail)
+            {
+                ProjectModel p = new ProjectModel();
+                p.ProjectId = proj.ProjectId;
+                p.ProjectName = proj.ProjectName;
+                p.ProjectDesc = proj.ProjectDesc;
+                lstProjDetails.Add(p);
+            }
+            return lstProjDetails;
+        }
+        
     }
 }

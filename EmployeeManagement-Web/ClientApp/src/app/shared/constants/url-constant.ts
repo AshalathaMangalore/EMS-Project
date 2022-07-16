@@ -21,5 +21,10 @@ export class EmployeeURLConstants{
     static UPDATEEMPLOYEE = apiUrl + '/employee/UpdateEmployeeDetails';
     static DELETEALLEMP = apiUrl + '/employee/DeleteEmployee';
     static SAVEEMPLOYEE = apiUrl + '/employee/AddEmployeeDetails';
+    static GETEMPBYCOMPID = apiUrl + '/employee/GetEmployeesByCompanyId';
+}
+
+export class ProjectURLConstants{
+    static GETPROJECTSBYID = apiUrl + '/project/GetProjectByProjID';
 }
 

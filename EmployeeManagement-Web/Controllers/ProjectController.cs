@@ -47,6 +47,13 @@ namespace EmployeeManagement_Web.Controllers
             }
         }
 
+        [HttpGet("GetProjectByProjID")]
+        public async Task<List<ProjectModel>> GetProjectsByProjID(int projId)
+        {
+            var projects = await projectBusiness.GetProjectsByProjID(projId);
+            return projects;
+        }
+
 
     }
 }

@@ -87,7 +87,8 @@
     padding: 30px;
     -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
     -moz-box-shadow:0 0 10px rgba(0,0,0,0.4); 
-    box-shadow:0 0 10px rgba(0,0,0,0.4)
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
+    text-align: -webkit-center;
 }
 
 .popup h2 {
@@ -102,4 +103,7 @@
 .popup .content {
   max-height: 30%;
   overflow: auto;
+}
+.popup button{
+  align-items: center;
 }
