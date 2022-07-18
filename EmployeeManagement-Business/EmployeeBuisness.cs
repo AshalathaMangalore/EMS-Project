@@ -167,7 +167,7 @@ namespace EmployeeManagement_Business
                     EmployeeModel empObj = new EmployeeModel();
                     empObj.Id = empDetails[i].Id;
                     CompanyDetail compDetail = await companyRepository.GetById(empDetails[i].CompanyId);
-                    ProjectDetail projDetail = await projectRepository.GetByProjectId(empDetails[i].CompanyId);
+                    ProjectDetail projDetail = await projectRepository.GetByProjectId(empDetails[i].ProjectId);
                     empObj.CompanyName = compDetail.CompanyName;
                     empObj.ProjectName = projDetail.ProjectName;
                     empObj.FirstName = empDetails[i].FirstName;
