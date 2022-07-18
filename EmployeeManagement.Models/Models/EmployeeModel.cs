@@ -15,5 +15,6 @@
 
         public string? CompanyName { get; set; }
         public string? CompanyPhone { get; set; }
+        public string? ProjectName { get; set; }
     }
 }
