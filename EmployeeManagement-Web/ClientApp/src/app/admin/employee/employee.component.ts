@@ -10,13 +10,16 @@ import { EmployeeModel } from 'src/app/login/models/employee/employee.module';
 })
 export class EmployeeComponent implements OnInit {
   EmployeeForm!: FormGroup;
+  companyDDdetails: any = [];
+  companydetails: any = [];
   allEmpDetails: any =[];
-  companyDDdetails: any =[];
-  projectDDdetails: any=[];
   Submit: boolean=true;
   id: any;
   show : boolean=false;
-  errorshow: boolean=false;
+  show1: boolean=false;
+  errorshow:boolean=false;
+  btncondition:boolean=false;
+  empid:any;
 
   constructor(private formBuilder: FormBuilder,private authenticationService: AuthenticationService) { }
   ngOnInit(): void {
@@ -33,17 +36,12 @@ export class EmployeeComponent implements OnInit {
     });
     this.getAllEmployee();
     this.getCompanyDetailsForDropdown();
-   
+
   }
-  
   
   onSubmit(){
     if (this.EmployeeForm.invalid)
-    {
-      this.errorshow=true;
       return;
-    }
-      //return;
     const companyId =parseInt( this.EmployeeForm.value.companyId );
     const projectId = parseInt( this.EmployeeForm.value.projectId );
     const firstName = this.EmployeeForm.value.firstname;
@@ -76,20 +74,8 @@ export class EmployeeComponent implements OnInit {
       // this.clearForm();
     });
 
-    this.getAllEmployee();
-    
+    // this.getAllEmployee();
 
-  }
-
-  getCompanyDetailsForDropdown(){
-    debugger;
-    this.authenticationService.getCompanyDetails()
-    .subscribe(
-      (data : any) => {
-        debugger;
-        this.companyDDdetails = data;
-        
-      })
   }
 
 
@@ -118,43 +104,72 @@ export class EmployeeComponent implements OnInit {
     }
  
   editEmp(empId:any){
+   
     this.authenticationService.getEmployeeById(empId)
     .subscribe(
       (data:any)=>{
         console.log(data);
         debugger
         this.EmployeeForm = this.formBuilder.group({
+          companyId:[data.companyId, ''],
+          
+          projectId:[data.projectId, ''],
           firstname:[data.firstName, ''],
           lastname:[data.lastName, ''],
+          gender:[data.gender, ''],
           phone:[data.phone, ''],
           email:[data.email, ''],
-          companyId: [data.companyId, ''],
-          projectId: [data.projectId,''],
-          gender:[data.gender,''],
-          datecreated:[data.dateCreated,''],
-          datemodified:[data.dateModified,'']
+          dateCreated:[data.dateCreated, ''],
+          dateModified:[data.dateModified, '']
         });
         this.id=data.id;
+      })
+  }
+
+  deleteAlert(empId:any){
+    this.empid=empId;
+    this.show1=true;
+  }
+  deletemethod(){
+    this.btncondition=true;
+  }
+
+  delete(){
+    this.authenticationService.deleteEmployeeDetails(this.empid)
+    .subscribe(
+      (data : any) => {
+        data;
       })
   }
 
   closePopup()
   {
     this.show = !this.show;
+    this.show1 = !this.show1;
     this.clearForm();
   }
 
-  delete(empId: any) {
-    this.authenticationService.deleteEmployeeDetails(empId)
-      .subscribe(
-        (data: any) => {
-          debugger;
-          data;
-          //this.allCompanyDetails = data;
-        })
+
+  getCompanyDetailsForDropdown(){
+    this.authenticationService.getCompanyDetails()
+    .subscribe(
+      (data : any) => {
+        this.companyDDdetails = data;
+      }
+    )
   }
 
   closeErrorPopup(){
-    this.errorshow=!this.errorshow;
+
+  }
+
+  getCompDetailsById(compId:any){
+    this.authenticationService.getCompanyDetailsById(compId)
+    .subscribe(
+      (data : any) => {
+        this.companydetails = data;
+      }
+    )
+
   }
 }

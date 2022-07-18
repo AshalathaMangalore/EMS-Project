@@ -9,10 +9,12 @@ namespace EmployeeManagement_Business
     {
         private readonly EmployeeRepository employeeRepository;
         private readonly CompanyRepository companyRepository;
+        private readonly ProjectRepository projectRepository;
         public EmployeeBuisness()
         {
             this.employeeRepository = new EmployeeRepository();
             this.companyRepository = new CompanyRepository();
+            this.projectRepository = new ProjectRepository(); 
         }
 
         public async Task<List<Employee>> GetAllEmployeesAsync()
@@ -158,16 +160,16 @@ namespace EmployeeManagement_Business
         {
             List<EmployeeModel> empLst = new List<EmployeeModel>();
             List<Employee> empDetails = await employeeRepository.GetAllEmployeesAsync();
-            //CompanyDetail compDetail = await companyRepository.GetById(companyId);
-
             if (empDetails.Count != 0)
             {
                 for (int i = 0; i < empDetails.Count; i++)
                 {
                     EmployeeModel empObj = new EmployeeModel();
                     empObj.Id = empDetails[i].Id;
-                    empObj.CompanyId = empDetails[i].CompanyId;
-                    empObj.ProjectId = empDetails[i].ProjectId;
+                    CompanyDetail compDetail = await companyRepository.GetById(empDetails[i].CompanyId);
+                    ProjectDetail projDetail = await projectRepository.GetByProjectId(empDetails[i].CompanyId);
+                    empObj.CompanyName = compDetail.CompanyName;
+                    empObj.ProjectName = projDetail.ProjectName;
                     empObj.FirstName = empDetails[i].FirstName;
                     empObj.LastName = empDetails[i].LastName;
                     empObj.Gender = empDetails[i].Gender;
