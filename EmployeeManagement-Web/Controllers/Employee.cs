@@ -1,6 +1,11 @@
-﻿namespace EmployeeManagement.Models.Models
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
+
+namespace EmployeeManagement_Repository.Entities
 {
-    public class EmployeeModel
+    public partial class Employee
     {
         public int Id { get; set; }
         public int CompanyId { get; set; }
@@ -13,8 +18,7 @@
         public string DateCreated { get; set; }
         public string DateModified { get; set; }
 
-        public string? CompanyName { get; set; }
-        public string? CompanyPhone { get; set; }
-        public string? ProjectName { get; set; }
+        public virtual CompanyDetail Company { get; set; }
+        public virtual ProjectDetail Project { get; set; }
     }
 }

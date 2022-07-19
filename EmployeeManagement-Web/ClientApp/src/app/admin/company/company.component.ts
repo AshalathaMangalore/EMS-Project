@@ -40,6 +40,10 @@ export class CompanyComponent implements OnInit {
         this.authenticationService.SaveCompany(companyname, companyPhone, companyAddress)
       .subscribe(
         (data : any) => {
+          //this.router.navigate(["/admin"]);
+          // if(confirm("Succefully Added Company Details") == true){
+          //   this.clearForm();
+          // }
           this.show = true;
           this.getCompanyDetails();
         })
@@ -118,6 +122,7 @@ export class CompanyComponent implements OnInit {
           this.EditCheck = true;
         })
     }
+    
     
   
 }

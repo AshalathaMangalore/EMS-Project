@@ -6,14 +6,14 @@
     <h1>Add Employee Details</h1>
     <div class="divCompany">
     <div class="row p-6">
-      <!-- <input class="form-control" formControlName="companyId" placeholder="Company ID" type="text"> -->
       <select class="form-control" formControlName="companyId">  
         <option value="" disabled selected>--Select Company--</option>  
         <option *ngFor="let lang of companyDDdetails"
                 value={{lang.companyId}}>  
             {{lang.companyName}}  
         </option>  
-      </select>  
+      </select>
+      <!-- <input class="form-control" formControlName="companyId" placeholder="Company ID" type="text"> -->
     </div>
     <div class="row p-6">
       <input [readonly]="isEditEmployee" class="form-control" formControlName="projectId" placeholder="Project ID" type="text">
@@ -24,6 +24,10 @@
               {{lang.projectName}}  
           </option>  
       </select>  -->
+    </div>
+    <div class="row p-6">
+      
+      <input class="form-control" formControlName="projectId" placeholder="Project ID" type="text">
     </div>
     <div class="row p-6">
       <input class="form-control" formControlName="firstname" placeholder="First Name" type="text">
@@ -60,8 +64,9 @@
   <div style="height: 400px;overflow-y: auto;" >
     <table border="1" id="tblCompany">
   <tr>
-    <th>Company ID</th>
-    <th>Project ID</th>
+    <!-- <th>Company name</th> -->
+    <th>Company Name</th>
+    <th>Project Name</th>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Gender</th>
@@ -69,11 +74,13 @@
     <th>Phone</th>
     <th>Date Created</th>
     <th>Date Modified</th>
-    <th>Action</th>
+    <th>Delete</th>
+    <th>Edit</th>
   </tr>
   <tr *ngFor="let item of allEmpDetails">
-    <td>{{item.companyId}}</td>
-    <td>{{item.projectId}}</td>
+    <!-- <td>{{item1.companyName}}</td> -->
+    <td>{{item.companyName}}</td>
+    <td>{{item.projectName}}</td>
     <td>{{item.firstName}}</td>
     <td>{{item.lastName}}</td>
     <td>{{item.gender}}</td>
@@ -81,22 +88,36 @@
     <td>{{item.phone}}</td>
     <td>{{item.dateCreated}}</td>
     <td>{{item.dateModified}}</td>
-    <td>
-    <button class="btn btn-success" (click)="editEmp(item.id)">Edit</button>
-    <button class="btn btn-danger btnSubmit" (click)="delete(item.id)">Delete</button>
-  </td>
+    <td><button  class="btnSubmit" (click)="deleteAlert(item.id)">Delete</button></td>
+    <td><button class="btn btn-success" (click)="editEmp(item.id)">Edit</button></td>
   </tr>
 </table>
 </div>
 </div>
 </div>
 
-<div *ngIf="show">
+<!-- <div *ngIf="show">
   <div class="popup">
     <a class="close" (click)="closePopup()">&times;</a>
     <h2>Thanks!</h2>
     <div class="content">
       Succesully added new Employee Details
+    </div>
+    <div class="content">
+      <button  class="btnSubmit" (click)="closePopup()">close</button>
+    </div>
+  </div>
+</div> -->
+
+<div *ngIf="show1">
+  <div class="popup">
+    <a class="close" (click)="closePopup()">&times;</a>
+    <h2>Are you sure!!!!!!!!</h2>
+    <div class="content">
+      <button  class="btnSubmit" (click)="delete()">Yes</button>
+    </div>
+    <div class="content">
+      <button  class="btnSubmit" (click)="closePopup()">No</button>
     </div>
   </div>
 </div>

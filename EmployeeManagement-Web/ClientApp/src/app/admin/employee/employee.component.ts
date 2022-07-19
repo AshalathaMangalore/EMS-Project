@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/core/service/authentication.service';
@@ -41,69 +40,68 @@ export class EmployeeComponent implements OnInit {
   
   
   onSubmit(){
+    if(this.isEditEmployee == false)
+    {
     if (this.EmployeeForm.invalid)
     {
       this.errorshow=true;
       return;
     }
-    if (this.isEditEmployee == false){
-          //return;
-      const companyId =parseInt( this.EmployeeForm.value.companyId );
-      const projectId = parseInt( this.EmployeeForm.value.projectId );
-      const firstName = this.EmployeeForm.value.firstname;
-      const lastName = this.EmployeeForm.value.lastname;
-      const gender = this.EmployeeForm.value.gender;
-      const email = this.EmployeeForm.value.email;
-      const phone = this.EmployeeForm.value.phone;
-      const dateCreated = this.EmployeeForm.value.datecreated;
-      const dateModified = this.EmployeeForm.value.datemodified;
+      //return;
+    const companyId =parseInt( this.EmployeeForm.value.companyId );
+    const projectId = parseInt( this.EmployeeForm.value.projectId );
+    const firstName = this.EmployeeForm.value.firstname;
+    const lastName = this.EmployeeForm.value.lastname;
+    const gender = this.EmployeeForm.value.gender;
+    const email = this.EmployeeForm.value.email;
+    const phone = this.EmployeeForm.value.phone;
+    const dateCreated = this.EmployeeForm.value.datecreated;
+    const dateModified = this.EmployeeForm.value.datemodified;
 
-      let newEmployee:EmployeeModel = {
-        CompanyId:companyId,
-        ProjectId:projectId,
-        FirstName:firstName,
-        LastName:lastName,
-        Gender:gender,
-        Email:email,
-        Phone:phone,
-        DateCreated:dateCreated,
-        DateModified:dateModified
-      };
-      console.log(newEmployee);
-      
-      this.authenticationService.SaveEmployee(newEmployee)
-      .subscribe(
-        (data : any) => {
-          this.show=true;
+    let newEmployee:EmployeeModel = {
+      CompanyId:companyId,
+      ProjectId:projectId,
+      FirstName:firstName,
+      LastName:lastName,
+      Gender:gender,
+      Email:email,
+      Phone:phone,
+      DateCreated:dateCreated,
+      DateModified:dateModified
+    };
+    console.log(newEmployee);
+    
+     this.authenticationService.SaveEmployee(newEmployee)
+    .subscribe(
+      (data : any) => {
+        this.show=true;
 
-        console.log("Status: " + data);
-        // this.clearForm();
-      });
+      console.log("Status: " + data);
+      // this.clearForm();
+    });
 
-      this.getAllEmployee();     
+    this.getAllEmployee();
+  }
+  else{
+    let ModifiedEmployee:EditemployeeModel = {
+      Id: this.id,
+      FirstName: this.EmployeeForm.value.firstname,
+      LastName: this.EmployeeForm.value.lastname,
+      Email: this.EmployeeForm.value.email,
+      Phone: this.EmployeeForm.value.phone,
+      DateModified: this.EmployeeForm.value.datemodified
+    };
+    console.log(ModifiedEmployee);
 
-    } else {
-      
-      let ModifiedEmployee:EditemployeeModel = {
-        Id: this.id,
-        FirstName: this.EmployeeForm.value.firstname,
-        LastName: this.EmployeeForm.value.lastname,
-        Email: this.EmployeeForm.value.email,
-        Phone: this.EmployeeForm.value.phone,
-        DateModified: this.EmployeeForm.value.datemodified
-      };
-      console.log(ModifiedEmployee);
+    this.authenticationService.editEmployee(ModifiedEmployee)
+    .subscribe(
+      (data : any) => {
+        this.show = true;
+        this.getAllEmployee();
+      }
+    )
+  }
 
-      this.authenticationService.editEmployee(ModifiedEmployee)
-      .subscribe(
-        (data : any) => {
-          this.show = true;
-          this.getAllEmployee();
-        }
-      )
-              
-      
-    }
   }
 
   getCompanyDetailsForDropdown(){
@@ -143,7 +141,6 @@ export class EmployeeComponent implements OnInit {
     }
  
   editEmp(empId:any){
-
     this.authenticationService.getEmployeeById(empId)
     .subscribe(
       (data:any)=>{
@@ -161,7 +158,6 @@ export class EmployeeComponent implements OnInit {
           datemodified:[data.dateModified,'']
         });
         this.id=data.id;
-        this.isEditEmployee=true;
       })
   }
 
