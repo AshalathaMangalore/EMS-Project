@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
 
   allCompanyDetails=[];
   employees: EmployeeModel[]=[];
+  projectEmployee: EmployeeModel[]=[];
   project: ProjectModel[]=[];
   companyDD!: FormGroup;
   ngOnInit(): void {
@@ -86,6 +87,7 @@ export class DashboardComponent implements OnInit {
       })
   }
   OnProjectDDChange(projId:any){
-      this.employees = this.allEmpDetails1.filter(x=>x.projectId==projId);
+    debugger;
+      this.projectEmployee = this.allEmpDetails1.filter(x=>x.projectId==projId);
   }
 }
