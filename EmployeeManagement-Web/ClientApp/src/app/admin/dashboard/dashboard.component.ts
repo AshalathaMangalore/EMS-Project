@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/core/service/authentication.service';
 import { CompanyModel } from 'src/app/login/models/company/company.module';
 import { EmployeeModel } from 'src/app/login/models/employee.model';
+import { ProjectModel } from 'src/app/login/models/project/project.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,12 +14,14 @@ export class DashboardComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService, private formBuilder: FormBuilder) { }
   companyDDdetails: any = [];
+  projectDDdetails:any = [];
   allEmpDetails: any = [];
   allEmpDetails1: EmployeeModel[] = [];
-  allProjDetails: any = [];
+  allProjDetails1: ProjectModel[] = [];
 
   allCompanyDetails=[];
   employees: EmployeeModel[]=[];
+  project: ProjectModel[]=[];
   companyDD!: FormGroup;
   ngOnInit(): void {
 
@@ -27,6 +30,7 @@ export class DashboardComponent implements OnInit {
     });
    this.getCompanyDetailsForDropdown();
    this.getAllEmployee();
+   this.getAllProjectDetails();
   }
 
   getCompanyDetailsForDropdown(){
@@ -47,7 +51,7 @@ export class DashboardComponent implements OnInit {
       (data : any) => {
         debugger;
         this.allEmpDetails = data;
-        
+        console.log(data);
       })
       this.employees = this.allEmpDetails1.filter(x=>x.companyId == compId);
 
@@ -74,7 +78,14 @@ export class DashboardComponent implements OnInit {
       })
   }
 
-  // OnProjectDDChange(projId:any){
-
-  // }
+  getAllProjectDetails(){
+    this.authenticationService.getProjectDetails()
+    .subscribe(
+      (data : any) => {
+        this.projectDDdetails = data;        
+      })
+  }
+  OnProjectDDChange(projId:any){
+      this.employees = this.allEmpDetails1.filter(x=>x.projectId==projId);
+  }
 }
