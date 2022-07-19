@@ -26,5 +26,6 @@ export class EmployeeURLConstants{
 
 export class ProjectURLConstants{
     static GETPROJECTSBYID = apiUrl + '/project/GetProjectByProjID';
+    static GETALLPROJECT = apiUrl + '/project/GetAllprojects';
 }
 

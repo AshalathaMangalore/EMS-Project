@@ -143,6 +143,11 @@ export class AuthenticationService {
         return proj;
         }));
     }
-    
 
+    getProjectDetails(){
+        return this.http.get<any>(ProjectURLConstants.GETALLPROJECT)
+        .pipe(map(project => {
+        return project;
+        }));
+    }
 }
