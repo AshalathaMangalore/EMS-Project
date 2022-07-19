@@ -16,7 +16,7 @@
       </select>  
     </div>
     <div class="row p-6">
-      <input class="form-control" formControlName="projectId" placeholder="Project ID" type="text">
+      <input [readonly]="isEditEmployee" class="form-control" formControlName="projectId" placeholder="Project ID" type="text">
       <!-- <select class="form-control" formControlName="projectId" aria-placeholder="Select">  
         <option value="1" selected >--Select--</option>  
           <option *ngFor="let lang of projectDDdetails"  
@@ -32,7 +32,7 @@
       <input class="form-control" formControlName="lastname" placeholder="Last Name" type="text">
     </div>
     <div class="row p-6">
-      <input class="form-control" formControlName="gender" placeholder="Gender" type="text">
+      <input [readonly]="isEditEmployee" class="form-control" formControlName="gender" placeholder="Gender" type="text">
     </div>
     <div class="row p-6">
       <input class="form-control" formControlName="email" placeholder="Email" type="text">
@@ -41,13 +41,16 @@
       <input class="form-control" formControlName="phone" placeholder="Phone" type="text">
     </div>
     <div class="row p-6">
-      <input class="form-control" formControlName="datecreated" placeholder="Date Created" type="text">
+      <input [readonly]="isEditEmployee" class="form-control" formControlName="datecreated" placeholder="Date Created" type="text">
     </div>
     <div class="row p-6">
       <input class="form-control" formControlName="datemodified" placeholder="Date Modified" type="text">
     </div>
     <div class="row">
-      <button *ngIf="Submit" class="btn btn-primary" role="button" type="submit" width="100px"><h6>Submit</h6></button>
+      <button *ngIf="!isEditEmployee" class="btn btn-primary" role="button" type="submit" width="100px"><h6>Submit</h6></button>
+    </div>
+    <div class="row">
+      <button *ngIf="isEditEmployee" class="btn btn-primary" role="button" type="submit" width="100px" ><h6>Update</h6></button>
     </div>
    </div>
   </form>
@@ -95,8 +98,6 @@
     <div class="content">
       Succesully added new Employee Details
     </div>
-    <br/>
-    <button (click)="closePopup()" class="btn btn-success">Ok</button>
   </div>
 </div>
 <!-- error -->

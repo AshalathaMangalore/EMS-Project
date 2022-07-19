@@ -6,6 +6,7 @@ import { CompanyURLConstants, EmployeeURLConstants, LoginURLConstants, ProjectUR
 import { BehaviorSubject, Observable } from "rxjs";
 import { AuthModel } from "src/app/login/models/login.model";
 import { EmployeeModel } from "src/app/login/models/employee/employee.module";
+import { EditemployeeModel } from "src/app/login/models/editEmployee.model";
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<AuthModel>;
@@ -101,34 +102,10 @@ export class AuthenticationService {
         return emp;
         }));
     }
-    EditEmployee(id:any,firstName:string,lastName:string,phone:string,email:string){
-        var employeeModel = {
-            Id : id,
-            FirstName : firstName,
-            LastName : lastName,
-            Phone : phone,
-            Email : email
-        }
-        console.log(employeeModel);
-        
-        return this.http.put<any>(EmployeeURLConstants.UPDATEEMPLOYEE,employeeModel)
-        .pipe(map(empDetails => {
-            debugger
-                return empDetails;
-            }));
-    }
+    
     
 
-    SaveEmployee(newEmployee:EmployeeModel){
-        
-        return this.http.post<any>(EmployeeURLConstants.SAVEEMPLOYEE,newEmployee)
-            .pipe(map(status => {
-                debugger
-                return status;
-                
-
-            }));
-    }
+  
 
     getEmpDetailsByCompanyId(compId: any){
         return this.http.get<any>(EmployeeURLConstants.GETEMPBYCOMPID, { params: { 'companyId': compId }})
@@ -146,20 +123,59 @@ export class AuthenticationService {
     
 
     getAllEmployee(){        
-        return this.http.get<any>(EmployeeURLConstants.GETEMP)
+        return this.http.get<any>(EmployeeURLConstants.GETALLEMP)
             .pipe(map(employee => {
                 return employee;
             }));
         }
 
-    deleteCompanyDetails(compId : any){
-        debugger
-        return this.http.delete<any>(CompanyURLConstants.DELCOMP + compId)
-            .pipe(map(company => {
+    EditEmployee(id:any,firstName:string,lastName:string,phone:string,email:string){
+            var employeeModel = {
+                Id : id,
+                FirstName : firstName,
+                LastName : lastName,
+                Phone : phone,
+                Email : email
+            }
+            console.log(employeeModel);
+            
+            return this.http.put<any>(EmployeeURLConstants.UPDATEEMPLOYEE,employeeModel)
+            .pipe(map(empDetails => {
                 debugger
-           
-            }));
+                    return empDetails;
+                }));
+        }
+
+     SaveEmployee(newEmployee:EmployeeModel){
+        
+            return this.http.post<any>(EmployeeURLConstants.SAVEEMPLOYEE,newEmployee)
+                .pipe(map(status => {
+                    debugger
+                    return status;
+                    
     
-    }
+                }));
+        }
+
+    editEmployee(updateEmp : EditemployeeModel){
+
+        return this.http.put<any>(EmployeeURLConstants.UPDATEEMPLOYEES,updateEmp)
+        .pipe(map(status => {
+            debugger
+            return status;
+            
+
+        }));
+}
+
+    // deleteCompanyDetails(compId : any){
+    //     debugger
+    //     return this.http.delete<any>(CompanyURLConstants.DELCOMP + compId)
+    //         .pipe(map(company => {
+    //             debugger
+           
+    //         }));
+    
+    // }
 
 }
