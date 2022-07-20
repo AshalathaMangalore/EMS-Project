@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
 import { map } from 'rxjs/operators';
-import { LoginURLConstants, ProjectURLConstants, USERURLConstants } from "src/app/shared/constants/url-constant";
+import { CompanyURLConstants, EmployeeURLConstants, LoginURLConstants, ProjectURLConstants, USERURLConstants } from "src/app/shared/constants/url-constant";
 import { BehaviorSubject, Observable } from "rxjs";
 import { AuthModel } from "src/app/login/models/login.model";
 import { EmployeeModel } from "src/app/login/models/employee/employee.module";
