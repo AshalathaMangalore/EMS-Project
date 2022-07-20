@@ -69,5 +69,24 @@ namespace EmployeeManagement_Web.Controllers
         {
             return await employeeBusiness.GetEmployeesByProjectId(projectId);
         }
+
+        [HttpGet("GetAllEmp")]
+        public async Task<List<EmployeeModel>> GetAllEmpDetails()
+        {
+            return await employeeBusiness.GetAllEmpDetails();
+        }
+
+        [HttpGet("GetEmployeeById")]
+        public async Task<EmployeeModel> GetEmployeeById(int empId)
+        {
+            return await employeeBusiness.GetEmployeeById(empId);
+
+        }
+
+        [HttpPut("UpdateEmployeeDetails")]
+        public async Task<HttpStatusCode> UpdateEmployeeDetails(EmployeeModel employee)
+        {
+            return await employeeBusiness.UpdateEmployeeDetails(employee);
+        }
     }
 }

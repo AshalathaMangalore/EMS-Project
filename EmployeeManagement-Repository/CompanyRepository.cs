@@ -37,7 +37,8 @@ namespace EmployeeManagement_Repository
             
             if (existingCompany != null)
             {
-                existingCompany.CompanyName = company.CompanyName; 
+                existingCompany.CompanyName = company.CompanyName;
+                existingCompany.CompanyAddress = company.CompanyAddress;
                 existingCompany.CompanyPhone = company.CompanyPhone;
                 await this.dbContext.SaveChangesAsync();
             }
