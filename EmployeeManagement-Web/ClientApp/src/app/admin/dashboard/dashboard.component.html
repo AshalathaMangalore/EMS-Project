@@ -23,16 +23,16 @@
                     {{emp.email}}  
                 </option>  
                 </select>
-            <!-- </div>
-            <div class="row p-6" > -->
-                <!-- <h5>Select Project Details :</h5>
+            </div>
+            <div class="row p-6" >
+                <h5>Select Project Details :</h5>
                 <select class="form-control" #projDDFields (change)="OnProjectDDChange(projDDFields.value)">
                     <option value="" disabled selected>--Select Project--</option>
-                    <option *ngFor="let lang of allProjDetails"
-                        value={{lang.projectId}}>  
-                    {{lang.projectName}}  
-                </option>  
-                </select> -->
+                    <option *ngFor="let lang of projectDDdetails"
+                        value={{lang.projectId}}>
+                    {{lang.projectName}}
+                </option>
+                </select>
 
         </div>
         <br/><br/>
@@ -40,7 +40,7 @@
             <table border="1" id="tblCompany">
           <tr>
             <th>Company Name</th>
-            <th>Project Name</th>
+            <th>Project NAM</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Gender</th>
@@ -65,8 +65,36 @@
           </td> -->
           </tr>
         </table>
-          </div>
-
-
     </div>
+
+    <div style="height: 400px;overflow-y: auto;" >
+        <table border="1" id="tblCompany">
+      <tr>
+        <th>Company ID</th>
+        <th>Project ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Date Created</th>
+        <th>Date Modified</th>
+      </tr>
+      <tr *ngFor="let item of projectEmployee">
+        <td>{{item.companyId}}</td>
+        <td>{{item.projectId}}</td>
+        <td>{{item.firstName}}</td>
+        <td>{{item.lastName}}</td>
+        <td>{{item.gender}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.dateCreated}}</td>
+        <td>{{item.dateModified}}</td>
+        <!-- <td>
+        <button class="btn btn-success" (click)="editEmp(item.id)">Edit</button>
+        <button class="btn btn-danger btnSubmit" (click)="delete(item.id)">Delete</button>
+      </td> -->
+      </tr>
+    </table>
+</div>
 </div>
