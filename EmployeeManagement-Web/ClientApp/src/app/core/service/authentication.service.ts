@@ -168,5 +168,6 @@ export class AuthenticationService {
                 //localStorage.setItem('currentUser', JSON.stringify(user));
                 return project;
             }));
-    }
+    } 
+    
 }
