@@ -16,16 +16,6 @@
       <!-- <input class="form-control" formControlName="companyId" placeholder="Company ID" type="text"> -->
     </div>
     <div class="row p-6">
-      <!-- <select class="form-control" formControlName="companyId">  
-        <option value="" disabled selected>--Select Company Id--</option>  
-        <option *ngFor="let lang of companyDDdetails"
-                value={{lang.companyId}}>  
-            {{lang.companyId}}  
-        </option>  
-      </select> -->
-      <input class="form-control" formControlName="companyId" placeholder="Company Id" type="text">
-    </div>
-    <div class="row p-6">
       
       <input class="form-control" formControlName="projectId" placeholder="Project ID" type="text">
     </div>
@@ -85,7 +75,7 @@
     <td>{{item.phone}}</td>
     <td>{{item.dateCreated}}</td>
     <td>{{item.dateModified}}</td>
-    <td><button  class="btnSubmit" (click)="deleteAlert(item.id)">Delete</button></td>
+    <td><button  class="btnSubmit btn btn-danger" (click)="deleteAlert(item.id)">Delete</button></td>
     <td><button class="btn btn-success" (click)="editEmp(item.id)">Edit</button></td>
   </tr>
 </table>
