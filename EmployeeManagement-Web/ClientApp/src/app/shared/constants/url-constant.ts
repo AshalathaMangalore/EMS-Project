@@ -7,3 +7,8 @@ export class LoginURLConstants {
 export class USERURLConstants {
     static GETALL = apiUrl + '/user/GetAllUser';
 }
+export class ProjectURLConstants{
+    static GETPROJECTSBYID = apiUrl + '/controller/GetProjectByProjID';
+    static SAVEPROJECT = apiUrl + '/project/SaveProject';
+    static GETPROJECTS = apiUrl + '/project/GetAllprojects';
+}

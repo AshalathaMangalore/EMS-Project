@@ -36,10 +36,20 @@ namespace EmployeeManagement_Business
                 return HttpStatusCode.BadRequest;
             }
         }
-        public async Task<List<ProjectDetail>> GetAllProjectAsync()
+        public async Task<List<ProjectModel>> GetAllProjectAsync()
         {
-             
-            return await projectRepository.GetAllProject();
+            List<ProjectDetail> pd = new List<ProjectDetail>();
+            List<ProjectModel> projectList = new List<ProjectModel>();
+            pd = await projectRepository.GetAllProject();
+            foreach (var item in pd)
+            {
+                ProjectModel md = new ProjectModel();
+                md.ProjectId = item.ProjectId;
+                md.ProjectName = item.ProjectName;
+                md.ProjectDesc = item.ProjectDesc;
+                projectList.Add(md);
+            }
+            return projectList;
         }
 
         public async Task<ProjectDetail> GetProjectByIDAsync(int id)
@@ -49,5 +59,6 @@ namespace EmployeeManagement_Business
             return project;
        
         }
+        
     }
 }

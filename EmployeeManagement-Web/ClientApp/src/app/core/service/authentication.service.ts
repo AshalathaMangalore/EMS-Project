@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
 import { map } from 'rxjs/operators';
-import { LoginURLConstants, USERURLConstants } from "src/app/shared/constants/url-constant";
+import { LoginURLConstants, ProjectURLConstants, USERURLConstants } from "src/app/shared/constants/url-constant";
 import { BehaviorSubject, Observable } from "rxjs";
 import { AuthModel } from "src/app/login/models/login.model";
 @Injectable({ providedIn: 'root' })
@@ -41,6 +41,28 @@ export class AuthenticationService {
         //this.currentUserSubject.next(null);
         this.router.navigate(['/login'])
     }
-    
-
+    SaveProject(projectname: string, projectdescription: string){
+        debugger;
+        var projectModel={
+            ProjectId:0,
+            ProjectName:projectname,
+            ProjectDesc:projectdescription
+        }
+        return this.http.post<any>(ProjectURLConstants.SAVEPROJECT,projectModel)
+            .pipe(map(project => {
+            debugger
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                //localStorage.setItem('currentUser', JSON.stringify(user));
+                return project;
+            }));
+    }
+    getProjectDetails(){
+        return this.http.get<any>(ProjectURLConstants.GETPROJECTS)
+            .pipe(map(project => {
+            debugger
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                //localStorage.setItem('currentUser', JSON.stringify(user));
+                return project;
+            }));
+    }
 }

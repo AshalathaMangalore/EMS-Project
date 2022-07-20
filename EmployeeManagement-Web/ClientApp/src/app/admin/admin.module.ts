@@ -8,6 +8,8 @@ import { TopnavComponent } from '../shared/topnav/topnav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { CompanyComponent } from './company/company.component';
+import { ProjectComponent } from './project/project.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,11 +20,13 @@ import { CompanyComponent } from './company/company.component';
     TopnavComponent,
     DashboardComponent,
     EmployeeComponent,
-    CompanyComponent
+    CompanyComponent,
+    ProjectComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
