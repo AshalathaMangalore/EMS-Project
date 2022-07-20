@@ -119,8 +119,8 @@ export class EmployeeComponent implements OnInit {
           gender:[data.gender, ''],
           phone:[data.phone, ''],
           email:[data.email, ''],
-          dateCreated:[data.dateCreated, ''],
-          dateModified:[data.dateModified, '']
+          datecreated:[data.dateCreated, ''],
+          datemodified:[data.dateModified, '']
         });
         this.id=data.id;
       })
