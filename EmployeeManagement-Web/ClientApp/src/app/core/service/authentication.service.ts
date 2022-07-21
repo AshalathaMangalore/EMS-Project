@@ -167,7 +167,7 @@ export class AuthenticationService {
                 return project;
             }));
     }
-    getProjectDetails(){
+    getProjDetails(){
         return this.http.get<any>(ProjectURLConstants.GETPROJECTS)
             .pipe(map(project => {
             debugger
