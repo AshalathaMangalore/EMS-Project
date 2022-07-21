@@ -48,7 +48,7 @@ export class ProjectComponent implements OnInit {
   }
   getProjectDetails(){
     debugger
-    this.authenticationService.getProjectDetails()
+    this.authenticationService.getProjDetails()
     .subscribe(
       (data : any) => {
         this.allProjectDetails = data;
