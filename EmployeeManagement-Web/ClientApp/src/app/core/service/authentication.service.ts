@@ -150,4 +150,31 @@ export class AuthenticationService {
         return project;
         }));
     }
+    
+
+    SaveProject(projectname: string, projectdescription: string){
+        debugger;
+        var projectModel={
+            ProjectId:0,
+            ProjectName:projectname,
+            ProjectDesc:projectdescription
+        }
+        return this.http.post<any>(ProjectURLConstants.SAVEPROJECT,projectModel)
+            .pipe(map(project => {
+            debugger
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                //localStorage.setItem('currentUser', JSON.stringify(user));
+                return project;
+            }));
+    }
+    getProjectDetails(){
+        return this.http.get<any>(ProjectURLConstants.GETPROJECTS)
+            .pipe(map(project => {
+            debugger
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                //localStorage.setItem('currentUser', JSON.stringify(user));
+                return project;
+            }));
+    } 
+    
 }

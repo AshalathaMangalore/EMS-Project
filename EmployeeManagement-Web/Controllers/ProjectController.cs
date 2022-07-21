@@ -7,7 +7,7 @@ using System.Net;
 namespace EmployeeManagement_Web.Controllers
 {
     [ApiController]
-    [Route("[Controller]")]
+    [Route("project")]
     public class ProjectController : Controller
     {
         private readonly ProjectBusiness projectBusiness;
@@ -25,9 +25,8 @@ namespace EmployeeManagement_Web.Controllers
 
         [HttpGet("GetAllprojects")]
 
-        public async Task<List<ProjectDetail>> GetAllprojects()
+        public async Task<List<ProjectModel>> GetAllprojects()
         {
-            
             return await projectBusiness.GetAllProjectAsync();
         }
 
@@ -55,5 +54,6 @@ namespace EmployeeManagement_Web.Controllers
         }
 
 
+     
     }
 }
