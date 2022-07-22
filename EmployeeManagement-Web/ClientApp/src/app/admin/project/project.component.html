@@ -27,9 +27,7 @@
     <table border="1" id="tblCompany">
       <tr>
         <th>Project Name</th>
-        <th>Project Description</th> 
-        <th></th>
-        <th></th>
+        <th>Project Description</th>  
       </tr>
       <tr *ngFor="let item of allProjectDetails">
         <td >{{item.projectName}}</td>
@@ -47,8 +45,10 @@
       <a class="close" (click)="closePopup()">&times;</a>
       <h2>Thanks!</h2>
       <div class="content">
-        Succesully added new Company Details
+        Succesully added new Company Details 
       </div>
+      <br/>
+    <button (click)="closePopup()" class="btn btn-success">Ok</button>
     </div>
   </div>
 

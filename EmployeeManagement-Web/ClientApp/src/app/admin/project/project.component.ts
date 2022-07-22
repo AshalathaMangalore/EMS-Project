@@ -57,8 +57,15 @@ export class ProjectComponent implements OnInit {
   closePopup()
   {
     this.show = !this.show; 
+    this.clearForm;
+    this.getProjectDetails();
   }
-
+  clearForm() {
+    this.ProjectForm.reset({
+          'projectname': '',
+          'projectdescription': ''
+         });
+    }
 
   }
 

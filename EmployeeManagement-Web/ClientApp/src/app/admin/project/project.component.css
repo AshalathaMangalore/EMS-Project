@@ -1,0 +1,110 @@
+#tblCompany {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #tblCompany td, #tblCompany th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #tblCompany tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #tblCompany tr:hover {background-color: #ddd;}
+  
+  #tblCompany th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2A3F54;
+    color: white;
+  }
+
+.btnSubmit {
+  align-items: center;
+  appearance: none;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 10px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd,sans-serif;
+  font-size: 1rem;
+  height: auto;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 6px 20px;
+  padding-left: 12px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s,background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.btnSubmit:active,
+.btnSubmit:focus {
+  outline: none;
+}
+
+.btnSubmit:hover {
+  background-position: -20px -20px;
+}
+
+.btnSubmit:focus:not(:active) {
+  box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
+
+.row{
+    padding-top: 5px;
+}
+.p-6{
+    /* width: 30%; */
+    padding: 10px 10px 0px 10px;
+}
+.divCompany{
+    width: 50%;
+    padding: 10px 10px 10px 10px;
+    background-color: #EDEDED;
+}
+
+.popup {
+  background: #6fd68e;
+    top: 100px;
+    left: 40%;
+    width: 419px;
+    position: absolute;
+    z-index: 41;
+    padding: 30px;
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.4); 
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
+    text-align: -webkit-center;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: rgb(24, 24, 24);
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+.popup button{
+  align-items: center;
+}
