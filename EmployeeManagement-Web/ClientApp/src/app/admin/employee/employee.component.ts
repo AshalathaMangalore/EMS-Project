@@ -139,14 +139,20 @@ export class EmployeeComponent implements OnInit {
     .subscribe(
       (data : any) => {
         data;
+        this.closePopup1();
       })
   }
 
   closePopup()
   {
     this.show = !this.show;
-    this.show1 = !this.show1;
+     this.show1 = !this.show1;
     this.clearForm();
+  }
+  closePopup1()
+  {
+    this.show1 = !this.show1;
+    
   }
 
 
