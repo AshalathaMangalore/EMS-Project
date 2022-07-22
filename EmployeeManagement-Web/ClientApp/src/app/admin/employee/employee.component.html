@@ -108,13 +108,11 @@
 
 <div *ngIf="show1">
   <div class="popup">
-    <a class="close" (click)="closePopup()">&times;</a>
+    <a class="close" (click)="closePopup1()">&times;</a>
     <h2>Are you sure!!!!!!!!</h2>
-    <div class="content">
-      <button  class="btnSubmit" (click)="delete()">Yes</button>
-    </div>
-    <div class="content">
-      <button  class="btnSubmit" (click)="closePopup()">No</button>
+    <div class="content" style="display: flex;">
+      <button  class="btn btn-danger" id="btn2" (click)="closePopup()">No</button>
+      <button  class="btn btn-success" id="btn1" (click)="delete()">Yes</button>
     </div>
   </div>
 </div>

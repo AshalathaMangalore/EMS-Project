@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ModuleWithComponentFactories, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class CompanyComponent implements OnInit {
   CompanyForm!: FormGroup;
   allCompanyDetails: any = [];
   show: boolean=false;
+  show3: boolean=false;
   Submit: boolean=true;
   EditCheck: boolean=false;
   companyId: any;
@@ -34,9 +35,14 @@ export class CompanyComponent implements OnInit {
     {
     if (this.CompanyForm.invalid)
       return;
+      if(this.CompanyForm.value.companyname == null)
+      {
+        this.show3 = true;
+      }
       const companyname = this.CompanyForm.value.companyname;
       const companyPhone = this.CompanyForm.value.companyPhone;
       const companyAddress = this.CompanyForm.value.companyAddress;
+      
         this.authenticationService.SaveCompany(companyname, companyPhone, companyAddress)
       .subscribe(
         (data : any) => {
@@ -57,6 +63,7 @@ export class CompanyComponent implements OnInit {
       .subscribe(
         (data : any) => {
           this.show = true;
+          this.Submit = true;
         })
       }
   }
@@ -119,6 +126,9 @@ export class CompanyComponent implements OnInit {
           this.Submit = false;
           this.EditCheck = true;
         })
+    }
+    get err(){
+      return this.CompanyForm.controls;
     }
     
     
