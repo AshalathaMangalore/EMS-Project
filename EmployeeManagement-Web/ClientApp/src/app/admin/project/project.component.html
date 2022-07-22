@@ -1,0 +1,54 @@
+<div class="right_col" role="main">
+    <!-- top tiles -->
+    <div class="row tile_count">
+      <div class="">
+    <form [formGroup]="ProjectForm" (ngSubmit)="onSubmit()">
+      <h1>Add Project Details</h1>
+      <div class="divCompany">
+      <div class="row p-6">
+        <input class="form-control" formControlName="projectname" placeholder="Project Name" type="text">
+      </div>
+      <div class="row p-6">
+        <input class="form-control" formControlName="projectdescription" placeholder="Project Description" type="text">
+      </div>
+      <div class="row">
+        <button *ngIf="Submit" class="btnSubmit submit" role="button" type="submit" width="100px"><h6>Submit</h6></button>
+        
+        </div>
+        <div class="row">
+          <button *ngIf="!Submit" class="btnSubmit submit" role="button" type="submit" width="100px"><h6>Update</h6></button>
+          </div>
+      </div>
+    </form>
+  </div>
+    <br/>
+  
+    <div style="height: 400px;overflow-y: auto;" >
+    <table border="1" id="tblCompany">
+      <tr>
+        <th>Project Name</th>
+        <th>Project Description</th> 
+        <th></th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let item of allProjectDetails">
+        <td >{{item.projectName}}</td>
+        <td >{{item.projectDesc}}</td> 
+        <!-- <td><button class="btnSubmit" (click)="delete(item.projectId)">Delete</button></td>
+        <td><button class="btnSubmit" (click)="edit(item.projectId)">Edit</button></td> -->
+      </tr>
+    </table>
+  </div>
+  </div>
+  </div>
+  
+  <div *ngIf="show">
+    <div class="popup">
+      <a class="close" (click)="closePopup()">&times;</a>
+      <h2>Thanks!</h2>
+      <div class="content">
+        Succesully added new Company Details
+      </div>
+    </div>
+  </div>
+

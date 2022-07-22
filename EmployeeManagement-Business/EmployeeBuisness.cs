@@ -96,6 +96,8 @@ namespace EmployeeManagement_Business
                     empObj.DateModified = empSel[i].DateModified;
                     empObj.CompanyName = compDetail.CompanyName;
                     empObj.CompanyPhone = compDetail.CompanyPhone;
+                    ProjectDetail projectDetail = await projectRepository.GetByProjectId(empSel[i].ProjectId);
+                    empObj.ProjectName = projectDetail.ProjectName;
                     empLst.Add(empObj);
                 }
                 return empLst;
