@@ -30,6 +30,7 @@ namespace EmployeeManagement_Repository
                 existingEmployee.LastName = employee.LastName;
                 existingEmployee.Phone = employee.Phone;
                 existingEmployee.Email = employee.Email;
+                existingEmployee.DateModified = employee.DateModified;
                 await this.dbContext.SaveChangesAsync();
             }
         }

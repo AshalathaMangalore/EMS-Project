@@ -232,5 +232,19 @@ namespace EmployeeManagement_Business
             await employeeRepository.Update(emp);
             return HttpStatusCode.OK;
         }
+
+
+        public async Task<HttpStatusCode> Updateemployeedetails(EmployeeUpdateModel employee)
+        {
+            Employee emp = new Employee();
+            emp.Id = employee.Id;
+            emp.FirstName = employee.FirstName;
+            emp.LastName = employee.LastName;
+            emp.Email = employee.Email;
+            emp.Phone = employee.Phone;
+            emp.DateModified = employee.DateModified;
+            await employeeRepository.Update(emp);
+            return HttpStatusCode.OK;
+        }
     }
 }
