@@ -1,4 +1,4 @@
-export class EditemployeeModel{
+export class EditemployeeModule{
     Id!: number;
     FirstName!: string;
     LastName!: string;

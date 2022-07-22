@@ -6,6 +6,7 @@ import { CompanyURLConstants, EmployeeURLConstants, LoginURLConstants, ProjectUR
 import { BehaviorSubject, Observable } from "rxjs";
 import { AuthModel } from "src/app/login/models/login.model";
 import { EmployeeModel } from "src/app/login/models/employee/employee.module";
+import { EditemployeeModule } from "src/app/login/models/employee/editEmployeeModule";
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<AuthModel>;
@@ -150,4 +151,15 @@ export class AuthenticationService {
         return project;
         }));
     }
+
+    editEmployee(updateEmp : EditemployeeModule){
+
+        return this.http.put<any>(EmployeeURLConstants.UPDATEEMPLOYEES,updateEmp)
+        .pipe(map(status => {
+            debugger
+            return status;
+            
+
+        }));
+}
 }
