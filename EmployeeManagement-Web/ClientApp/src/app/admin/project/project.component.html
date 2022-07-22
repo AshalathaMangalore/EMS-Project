@@ -28,14 +28,14 @@
       <tr>
         <th>Project Name</th>
         <th>Project Description</th> 
-        <th></th>
+        <th>Edit</th>
         <th></th>
       </tr>
       <tr *ngFor="let item of allProjectDetails">
         <td >{{item.projectName}}</td>
         <td >{{item.projectDesc}}</td> 
-        <!-- <td><button class="btnSubmit" (click)="delete(item.projectId)">Delete</button></td>
-        <td><button class="btnSubmit" (click)="edit(item.projectId)">Edit</button></td> -->
+        <!-- <td><button class="btnSubmit" (click)="delete(item.projectId)">Delete</button></td> -->
+        <td><button class="btnSubmit" (click)="EditProject(item.projectId)">Edit</button></td> 
       </tr>
     </table>
   </div>

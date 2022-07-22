@@ -176,5 +176,25 @@ export class AuthenticationService {
                 return project;
             }));
     } 
+    getProjectById(ProjectId:any){
+        debugger;
+        return this.http.get<any>(ProjectURLConstants.GETPROJECTSBYID, { params: { 'ProjectId': ProjectId }})
+        .pipe(map(project => {
+            debugger;
+        return project;
+        }));
+    }
     
+    EditProject(projectId:any, projectname: string ,projectdescription: string){
+        debugger
+        var projectModel ={
+            projectId: projectId,
+            projectname: projectname,
+            projectdescription: projectdescription,
+        }
+        return this.http.put<any>(ProjectURLConstants.UPDATEPROJECTS,projectModel)
+        .pipe(map(statusCodeDetail => {
+            return statusCodeDetail;
+        }));
+    }
 }
