@@ -1,7 +1,9 @@
 <div class="right_col" role="main">
     <!-- top tiles -->
     <div class=" tile_count">
-        <div class="row p-6">
+        <!-- <div class="row p-6"> -->
+          <div class="divCompany">
+            <div class="row p-6" >
             <h5>Select Company :</h5>
             <select class="form-control" #companyDDFields (change)="OnCompanyDDChange(companyDDFields.value)">
                 <option value="" disabled selected>--Select Company--</option>
@@ -15,26 +17,18 @@
             <div class="row p-6" >
                 <h5>Select Employee :</h5>
                 <select class="form-control" #empDDFields (change)="OnEmpDDChange(empDDFields.value)">
-                    <option value="" disabled selected>--Select Employee--</option>
+                    <option value="" selected>--Select Employee--</option>
                     <option *ngFor="let emp of allEmpDetails"
                         value={{emp.id}}>  
                     {{emp.email}}  
                 </option>  
                 </select>
             </div>
-            <div class="row p-6" >
-                <h5>Select Project Details :</h5>
-                <select class="form-control" #projDDFields (change)="OnProjectDDChange(projDDFields.value)">
-                    <option value="" disabled selected>--Select Project--</option>
-                    <option *ngFor="let lang of projectDDdetails"
-                        value={{lang.projectId}}>
-                    {{lang.projectName}}
-                </option>
-                </select>
-
-        </div>
+          </div>
+          <!-- </div> -->
+         
         <br/><br/>
-        <div style="height: 400px;overflow-y: auto;" >
+        <div style="height: auto;overflow-y: auto;" >
             <table border="1" id="tblCompany">
           <tr>
             <th>Company Name</th>
@@ -60,6 +54,18 @@
           </tr>
         </table>
     </div>
+    <div class="divCompany">
+    <div class="row p-6" >
+      <h5>Select Project Details :</h5>
+      <select class="form-control" #projDDFields (change)="OnProjectDDChange(projDDFields.value)">
+          <option value="" disabled selected>--Select Project--</option>
+          <option *ngFor="let lang of projectDDdetails"
+              value={{lang.projectId}}>
+          {{lang.projectName}}
+      </option>
+      </select>
+    </div>
+</div>
     <div style="height: 400px;overflow-y: auto;" >
         <table border="1" id="tblCompany">
       <tr>

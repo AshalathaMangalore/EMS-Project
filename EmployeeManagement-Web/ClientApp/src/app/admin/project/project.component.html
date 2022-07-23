@@ -1,9 +1,20 @@
 <div class="right_col" role="main">
     <!-- top tiles -->
-    <div class="row tile_count">
-      <div class="">
+    <div class=" tile_count">
+      <div class="" >
+        <div class="wrap">
+          <div class="search">
+             <input type="text" class="searchTerm" placeholder="Search" #searchText >
+             <button type="submit" class="searchButton" (click)="SearchDetails(searchText.value)">
+               <i class="fa fa-search"></i>
+            </button>
+          </div>
+       </div>
     <form [formGroup]="ProjectForm" (ngSubmit)="onSubmit()">
       <h1>Add Project Details</h1>
+      <!-- Search -->
+      
+
       <div class="divCompany">
       <div class="row p-6">
         <input class="form-control" formControlName="projectname" placeholder="Project Name" type="text">
@@ -20,22 +31,21 @@
           </div>
       </div>
     </form>
+
   </div>
-    <br/>
+  <br/>
   
-    <div style="height: 400px;overflow-y: auto;" >
+    <div style="height: 340px;overflow-y: auto;" >
     <table border="1" id="tblCompany">
       <tr>
         <th>Project Name</th>
         <th>Project Description</th> 
-        <th>Edit</th>
-        <th></th>
+        <th>Action</th>
       </tr>
-      <tr *ngFor="let item of allProjectDetails">
+      <tr *ngFor="let item of allProjDetails">
         <td >{{item.projectName}}</td>
         <td >{{item.projectDesc}}</td> 
-        <!-- <td><button class="btnSubmit" (click)="delete(item.projectId)">Delete</button></td> -->
-        <td><button class="btnSubmit" (click)="EditProject(item.projectId)">Edit</button></td> 
+        <td><button class="btn btn-success" (click)="EditProject(item.projectId)">Edit</button></td> 
       </tr>
     </table>
   </div>
@@ -46,11 +56,26 @@
     <div class="popup">
       <a class="close" (click)="closePopup()">&times;</a>
       <h2>Thanks!</h2>
-      <div class="content">
+      <div class="content" *ngIf="!EditCheck">
         Succesully added new Company Details 
+      </div>
+      <div class="content" *ngIf="EditCheck">
+        Succesully updated Company Details 
       </div>
       <br/>
     <button (click)="closePopup()" class="btn btn-success">Ok</button>
+    </div>
+  </div>
+
+  <div *ngIf="showUpdate">
+    <div class="popup">
+      <a class="close" (click)="closeUpdatePopup()">&times;</a>
+      <h2>Thanks!</h2>
+      <div class="content">
+        Succesully updated Company Details 
+      </div>
+      <br/>
+    <button (click)="closeUpdatePopup()" class="btn btn-success">Ok</button>
     </div>
   </div>
 
