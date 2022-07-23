@@ -177,6 +177,14 @@ export class AuthenticationService {
                 return project;
             }));
     } 
+    getProjectById(ProjectId:any){
+        debugger;
+        return this.http.get<any>(ProjectURLConstants.GETPROJECTSBYID, { params: { 'ProjectId': ProjectId }})
+        .pipe(map(project => {
+            debugger;
+        return project;
+        }));
+    }
     
 
     editEmployee(updateEmp : EditemployeeModule){
@@ -189,4 +197,16 @@ export class AuthenticationService {
 
         }));
 }
+    EditProject(projectId:any, projectname: string ,projectdescription: string){
+        debugger
+        var projectModel ={
+            ProjectId: projectId,
+            ProjectName: projectname,
+            ProjectDesc: projectdescription,
+        }
+        return this.http.put<any>(ProjectURLConstants.UPDATEPROJECTS,projectModel)
+        .pipe(map(statusCodeDetail => {
+            return statusCodeDetail;
+        }));
+    }
 }

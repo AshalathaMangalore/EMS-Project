@@ -8,6 +8,9 @@ export class USERURLConstants {
     static GETALL = apiUrl + '/user/GetAllUser';
 }
 export class CompanyURLConstants {
+    static UPDATEPROJECT<T>(UPDATEPROJECT: any, companyModel: { projectId: any; projectname: string; projectdescription: string; }) {
+        throw new Error("Method not implemented.");
+    }
     static SAVECOMPANY = apiUrl + '/company/Create';
     static GETALLCOMPANY = apiUrl + '/company/GetAllCompanyDetails';
     static DELETEALLEMP = apiUrl + '/company/DeleteCompanyDetails';
@@ -30,5 +33,6 @@ export class ProjectURLConstants{
     static GETALLPROJECT = apiUrl + '/project/GetAllprojects';
     static SAVEPROJECT = apiUrl + '/project/SaveProject';
     static GETPROJECTS = apiUrl + '/project/GetAllprojects';
+    static UPDATEPROJECTS = apiUrl + '/project/EditProject';
 }
 

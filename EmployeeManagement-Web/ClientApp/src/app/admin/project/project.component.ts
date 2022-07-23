@@ -13,7 +13,7 @@ export class ProjectComponent implements OnInit {
   show: boolean=false;
   Submit: boolean=true;
   EditCheck: boolean=false;
-  companyId: any;
+  projectid: any;
   constructor(private formBuilder: FormBuilder,private authenticationService: AuthenticationService) { }
 
 
@@ -44,6 +44,17 @@ export class ProjectComponent implements OnInit {
           this.show = true;
         })
       }
+      else{
+        const projectId = this.projectid;
+        const projectname = this.ProjectForm.value.projectname;
+        const projectdescription = this.ProjectForm.value.projectdescription;
+        
+        this.authenticationService.EditProject( projectId,projectname,projectdescription)
+      .subscribe(
+        (data : any) => {
+          this.show = true;
+        })
+      }
        
   }
   getProjectDetails(){
@@ -66,6 +77,26 @@ export class ProjectComponent implements OnInit {
           'projectdescription': ''
          });
     }
+
+  EditProject(ProjectId:any){
+   
+    this.authenticationService.getProjectDetailsByProjId(ProjectId)
+    .subscribe(
+      (data:any)=>{
+        console.log(data);
+        debugger
+        this.ProjectForm = this.formBuilder.group({
+          projectname:[data[0].projectName, ''],
+          projectdescription:[data[0].projectDesc, '']
+          
+        });
+        this.projectid=data[0].projectId;
+        this.Submit = false;
+        this.EditCheck = true;
+      })
+  }
+
+
 
   }
 

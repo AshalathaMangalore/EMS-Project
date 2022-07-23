@@ -77,5 +77,23 @@ namespace EmployeeManagement_Business
             return lstProjDetails;
         }
         
+        public async Task<HttpStatusCode> EditProject(ProjectModel project)
+        {
+            ProjectDetail projectDetail = new ProjectDetail();
+            if (project != null)
+            {
+                projectDetail.ProjectId = project.ProjectId;
+                projectDetail.ProjectName = project.ProjectName;
+                projectDetail.ProjectDesc = project.ProjectDesc;
+                await projectRepository.UpdateProject(projectDetail);
+                return HttpStatusCode.OK;
+            }
+            else
+            {
+
+                return HttpStatusCode.BadRequest;
+            }
+
+        }
     }
 }
