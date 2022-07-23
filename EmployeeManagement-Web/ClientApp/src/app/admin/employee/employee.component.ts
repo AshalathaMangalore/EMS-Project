@@ -177,13 +177,13 @@ export class EmployeeComponent implements OnInit {
   closePopup()
   {
     this.show = !this.show;
-     this.show1 = !this.show1;
     this.clearForm();
+    this.getAllEmployee();
   }
   closePopup1()
   {
     this.show1 = !this.show1;
-    
+    this.getAllEmployee();
   }
 
 

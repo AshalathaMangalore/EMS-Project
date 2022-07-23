@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/service/authentication.service';
+import { CompanyModel } from 'src/app/login/models/company/company.module';
 
 @Component({
   selector: 'app-company',
@@ -12,7 +13,7 @@ import { AuthenticationService } from 'src/app/core/service/authentication.servi
 })
 export class CompanyComponent implements OnInit {
   CompanyForm!: FormGroup;
-  allCompanyDetails: any = [];
+  allCompanyDetails: CompanyModel[] = [];
   show: boolean=false;
   show3: boolean=false;
   Submit: boolean=true;
@@ -72,6 +73,7 @@ export class CompanyComponent implements OnInit {
   {
     this.show = !this.show;
     this.clearForm();
+    this.getCompanyDetails();
   }
 
   clearForm() {
@@ -131,6 +133,15 @@ export class CompanyComponent implements OnInit {
       return this.CompanyForm.controls;
     }
     
-    
+    SearchDetails(val: any){
+      debugger;
+      if(val!='')
+      {
+
+        this.allCompanyDetails = this.allCompanyDetails.filter(x=>x.companyName==val || x.companyAddress==val); 
+      }else{
+        this.getCompanyDetails();
+      }
+    }
   
 }

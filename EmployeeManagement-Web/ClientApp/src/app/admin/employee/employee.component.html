@@ -48,10 +48,10 @@
       <input class="form-control" formControlName="datemodified" placeholder="Date Modified" type="text">
     </div>
     <div class="row">
-      <button *ngIf="!isEditEmployee" class="btn btn-primary" role="button" type="submit" width="100px"><h6>Submit</h6></button>
+      <button *ngIf="!isEditEmployee" class="btnSubmit" role="button" type="submit" width="100px"><h6>Submit</h6></button>
     </div>
     <div class="row">
-      <button *ngIf="isEditEmployee" class="btn btn-primary" role="button" type="submit" width="100px" ><h6>Update</h6></button>
+      <button *ngIf="isEditEmployee" class="btnSubmit" role="button" type="submit" width="100px" ><h6>Update</h6></button>
     </div>
    </div>
   </form>
@@ -85,7 +85,7 @@
     <td>{{item.phone}}</td>
     <td>{{item.dateCreated}}</td>
     <td>{{item.dateModified}}</td>
-    <td><button  class="btnSubmit btn btn-danger" (click)="deleteAlert(item.id)">Delete</button></td>
+    <td><button  class="btn btn-danger" (click)="deleteAlert(item.id)">Delete</button></td>
     <td><button class="btn btn-success" (click)="editEmp(item.id)">Edit</button></td>
   </tr>
 </table>

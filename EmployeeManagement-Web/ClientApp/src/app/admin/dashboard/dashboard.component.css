@@ -28,3 +28,9 @@
     background-color: #2A3F54;
     color: white;
   }
+  
+  .divCompany{
+    width: 50%;
+    padding: 10px 10px 10px 10px;
+    background-color: #EDEDED;
+}

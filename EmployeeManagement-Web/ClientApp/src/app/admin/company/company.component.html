@@ -2,6 +2,15 @@
   <!-- top tiles -->
   <div class="row tile_count">
     <div class="">
+      <div class="wrap">
+        <div class="search">
+           <input type="text" class="searchTerm" placeholder="Search" #searchText >
+           <button type="submit" class="searchButton" (click)="SearchDetails(searchText.value)">
+             <i class="fa fa-search"></i>
+          </button>
+        </div>
+     </div>
+
   <form [formGroup]="CompanyForm" (ngSubmit)="onSubmit()">
     <h1>Add Company Details</h1>
     <div class="divCompany">
@@ -28,7 +37,7 @@
 </div>
   <br/>
 
-  <div style="height: 400px;overflow-y: auto;" >
+  <div style="height: 360px;overflow-y: auto;" >
   <table border="1" id="tblCompany">
     <tr>
       <th>COmpany Id</th>

@@ -4,7 +4,8 @@
 
     <div class="login_wrapper">
       <div class="animate form login_form">
-        <section class="login_content">
+        <h4 style="text-align: center">Welcome to Employee Management System</h4>
+        <section class="login_content login_Sec">
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <h1>Login Form</h1>
             <div>
@@ -36,20 +37,20 @@
         </section>
       </div>
 
-      <div id="register" class="animate form registration_form">
+      <div id="register" class="animate form registration_form login_Sec">
         <section class="login_content">
          
             <h1>Create Account</h1>
-            <div>
+            <div class=" row p-6">
               <input type="text" class="form-control" placeholder="Username" required="" />
             </div>
-            <div>
+            <div class=" row p-6">
               <input type="email" class="form-control" placeholder="Email" required="" />
             </div>
-            <div>
+            <div class=" row p-6">
               <input type="password" class="form-control" placeholder="Password" required="" />
             </div>
-            <div>
+            <div class=" row p-6">
               <a class="btn btn-default submit" href="index.html">Submit</a>
             </div>
 
