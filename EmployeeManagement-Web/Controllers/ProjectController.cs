@@ -53,7 +53,11 @@ namespace EmployeeManagement_Web.Controllers
             return projects;
         }
 
+        [HttpPut("EditProject")]
+        public async Task<HttpStatusCode> EditProject(ProjectModel project)
+        {
+            return await projectBusiness.EditProject(project);
+        }
 
-     
     }
 }

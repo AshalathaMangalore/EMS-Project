@@ -47,5 +47,17 @@ namespace EmployeeManagement_Repository
             }
         }
 
+        public async Task UpdateProject(ProjectDetail project)
+        {
+            var existingProj = dbContext.ProjectDetails.Where(x => x.ProjectId == project.ProjectId).FirstOrDefault();
+
+            if (existingProj != null)
+            {
+                existingProj.ProjectId = project.ProjectId;
+                existingProj.ProjectName = project.ProjectName;
+                existingProj.ProjectDesc = project.ProjectDesc;
+                await this.dbContext.SaveChangesAsync();
+            }
+        }
     }
 }

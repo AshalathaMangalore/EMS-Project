@@ -188,9 +188,9 @@ export class AuthenticationService {
     EditProject(projectId:any, projectname: string ,projectdescription: string){
         debugger
         var projectModel ={
-            projectId: projectId,
-            projectname: projectname,
-            projectdescription: projectdescription,
+            ProjectId: projectId,
+            ProjectName: projectname,
+            ProjectDesc: projectdescription,
         }
         return this.http.put<any>(ProjectURLConstants.UPDATEPROJECTS,projectModel)
         .pipe(map(statusCodeDetail => {
