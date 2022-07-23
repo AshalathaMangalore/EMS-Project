@@ -22,6 +22,7 @@ export class EmployeeURLConstants{
     static GETALLEMP = apiUrl + '/employee/GetAllEmp';
     static GETEMPBYID = apiUrl + '/employee/GetEmployeeById';
     static UPDATEEMPLOYEE = apiUrl + '/employee/UpdateEmployeeDetails';
+    static UPDATEEMPLOYEES = apiUrl + '/employee/UpdateEmployeeDetailsModel';
     static DELETEALLEMP = apiUrl + '/employee/DeleteEmployee';
     static SAVEEMPLOYEE = apiUrl + '/employee/AddEmployeeDetails';
     static GETEMPBYCOMPID = apiUrl + '/employee/GetEmployeesByCompanyId';

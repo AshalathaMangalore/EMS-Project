@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/core/service/authentication.service';
+import { EditemployeeModule } from 'src/app/login/models/employee/editEmployeeModule';
 import { EmployeeModel } from 'src/app/login/models/employee/employee.module';
 
 @Component({
@@ -19,7 +20,10 @@ export class EmployeeComponent implements OnInit {
   show1: boolean=false;
   errorshow:boolean=false;
   btncondition:boolean=false;
-  empid:any;
+  empid:any; 
+  isEditEmployee: boolean=false;
+  projectDDdetails:any = [];
+  
 
   constructor(private formBuilder: FormBuilder,private authenticationService: AuthenticationService) { }
   ngOnInit(): void {
@@ -36,12 +40,18 @@ export class EmployeeComponent implements OnInit {
     });
     this.getAllEmployee();
     this.getCompanyDetailsForDropdown();
+    this.getAllProjectDetails();
 
   }
   
   onSubmit(){
+    if(this.isEditEmployee == false)
+    {
     if (this.EmployeeForm.invalid)
+    {
+      this.errorshow=true;
       return;
+    }
     const companyId =parseInt( this.EmployeeForm.value.companyId );
     const projectId = parseInt( this.EmployeeForm.value.projectId );
     const firstName = this.EmployeeForm.value.firstname;
@@ -74,7 +84,27 @@ export class EmployeeComponent implements OnInit {
       // this.clearForm();
     });
 
-    // this.getAllEmployee();
+    this.getAllEmployee();
+  }
+  else{
+    let ModifiedEmployee:EditemployeeModule = {
+      Id: this.id,
+      FirstName: this.EmployeeForm.value.firstname,
+      LastName: this.EmployeeForm.value.lastname,
+      Email: this.EmployeeForm.value.email,
+      Phone: this.EmployeeForm.value.phone,
+      DateModified: this.EmployeeForm.value.datemodified
+    };
+    console.log(ModifiedEmployee);
+
+    this.authenticationService.editEmployee(ModifiedEmployee)
+    .subscribe(
+      (data : any) => {
+        this.show = true;
+        this.getAllEmployee();
+      }
+    )
+  }
 
   }
 
@@ -123,6 +153,7 @@ export class EmployeeComponent implements OnInit {
           datemodified:[data.dateModified, '']
         });
         this.id=data.id;
+        this.isEditEmployee = true;
       })
   }
 
@@ -139,14 +170,20 @@ export class EmployeeComponent implements OnInit {
     .subscribe(
       (data : any) => {
         data;
+        this.closePopup1();
       })
   }
 
   closePopup()
   {
     this.show = !this.show;
-    this.show1 = !this.show1;
+     this.show1 = !this.show1;
     this.clearForm();
+  }
+  closePopup1()
+  {
+    this.show1 = !this.show1;
+    
   }
 
 
@@ -171,5 +208,12 @@ export class EmployeeComponent implements OnInit {
       }
     )
 
+  }
+  getAllProjectDetails(){
+    this.authenticationService.getProjectDetails()
+    .subscribe(
+      (data : any) => {
+        this.projectDDdetails = data;        
+      })
   }
 }

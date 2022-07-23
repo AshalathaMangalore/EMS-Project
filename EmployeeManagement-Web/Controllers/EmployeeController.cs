@@ -88,5 +88,11 @@ namespace EmployeeManagement_Web.Controllers
         {
             return await employeeBusiness.UpdateEmployeeDetails(employee);
         }
+
+        [HttpPut("UpdateEmployeeDetailsModel")]
+        public async Task<HttpStatusCode> Updateemployeedetails(EmployeeUpdateModel employee)
+        {
+            return await employeeBusiness.Updateemployeedetails(employee);
+        }
     }
 }
